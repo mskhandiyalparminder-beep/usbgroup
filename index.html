@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+/* Popup Background */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* Popup Box */
+.popup-content {
+  background: #fff;
+  color: #000;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: pop 0.3s ease-in-out;
+}
+
+/* Pop animation */
+@keyframes pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.close-btn {
+  background: crimson;
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  float: right;
+  cursor: pointer;
+}
+</style>
+
+<script>
+function openPopup(page) {
+  fetch(page)               // load the other HTML file
+    .then(res => res.text())
+    .then(html => {
+      document.querySelector("#popup .popup-content").innerHTML =
+        '<button class="close-btn" onclick="closePopup()">Close</button>' +
+        html;
+      document.getElementById("popup").style.display = "flex";
+    });
+}
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USB Group - Shaping Tomorrow with Innovation, Trust & Impact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+          
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0D1B2A;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Header */
+    header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(3, 9, 94, 0.007);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            width: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img{
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('https://images.pexels.com/photos/462331/pexels-photo-462331.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 5rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect width="100%" height="100%" fill="%23000" opacity="0.3"/><polygon points="0,400 100,350 200,450 300,400 400,500 500,400 600,450 700,350 800,400 900,300 1000,400 1100,350 1200,400 1200,800 0,800" fill="%23111" opacity="0.5"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 2rem;
+            color: #3b82f6;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat p {
+            opacity: 0.8;
+        }
+
+        .hero-cta {
+            margin-top: 2rem;
+        }
+
+        /* Business Sectors */
+        .sectors {
+            padding: 5rem 0;
+            background: #0D1B2A;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 .highlight {
+            color: #3b82f6;
+        }
+
+        .sectors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .sector-card {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid #333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sector-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .sector-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .sector-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .sector-icon {
+            font-size: 2rem;
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+
+        .sector-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .sector-services {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .sector-services li {
+            padding: 0.5rem 0;
+            opacity: 0.8;
+            border-bottom: 1px solid #333;
+        }
+
+        .sector-services li:last-child {
+            border-bottom: none;
+        }
+
+        /* Achievements */
+        .achievements {
+            padding: 5rem 0;
+            background: #0D1B2A;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border-radius: 15px;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            padding: 5rem 0;
+            background: #0D1B2A;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border-radius: 15px;
+            border: 1px solid #333;
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: #3b82f6;
+            flex-shrink: 0;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(45deg, #1a1a1a, #0f0f0f);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #3b82f6;
+            padding: 1rem 2rem;
+            border: 2px solid #3b82f6;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: #3b82f6;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 3rem 0 1rem;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            padding: 0.25rem 0;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #3b82f6;
+        }
+
+        .footer-bottom {
+    color: #ccc;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.footer-bottom a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-bottom a:hover {
+    color: #fff;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: #ccc;
+    margin: 0 8px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #1da1f2; /* Twitter blue shade, you can change */
+}
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* just below header */
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        padding: -4rem;
+        text-align: center;
+    }
+
+    /* When active */
+    .nav-links.mobile-active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 1rem 0;
+        display: block;
+    }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content{
+                padding-top: 10rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .sectors-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .cta-button{
+                display: none;
+            }
+
+            .hero {
+                padding: 0 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .feature-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./logo1.png" alt="">
+            </div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./founder.html">Founder</a></li>
+                <li><a href="./timeline.html">Timeline</a></li>
+                <li><a href="./projects.html">Projects</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./impact.html">Impact</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+            <a href="#contact" class="cta-button">Get Started</a>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Shaping Tomorrow with <span class="highlight">Innovation, Trust & Impact</span></h1>
+            <p>For over 25 years, USB Group Organisation has been a trusted leader across multiple sectors, driving growth and innovation in real estate, IT, finance, and renewable energy.</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <h3>25+</h3>
+                    <p>Years Legacy</p>
+                </div>
+                <div class="stat">
+                    <h3>20+</h3>
+                    <p>Successful Projects Delivered</p>
+                </div>
+                <div class="stat">
+                    <h3>6</h3>
+                    <p>Business Sectors</p>
+                </div>
+            </div>
+            
+            <div class="hero-cta">
+                <a href="#contact" class="cta-button">Explore Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Sectors -->
+    <section class="sectors" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Business <span class="highlight">Sectors</span></h2>
+                <p>USB Group operates across six major business sectors, delivering comprehensive solutions and driving innovation in each domain.</p>
+            </div>
+            
+            <div class="sectors-grid">
+                <div class="sector-card">
+                    <div class="sector-icon">🏢</div>
+                    <h3>Real Estate</h3>
+                    <p>Premium developments, townships, and commercial projects built with quality and innovation at the forefront.</p>
+                    <ul class="sector-services">
+                        <li>Residential Projects</li>
+                        <li>Commercial Spaces</li>
+                        <li>Smart City Planning</li>
+                    </ul>
+                </div>
+                
+                <div class="sector-card">
+                    <div class="sector-icon">💻</div>
+                    <h3>IT & Software</h3>
+                    <p>Cutting-edge technology solutions, software development, and digital transformation services.</p>
+                    <ul class="sector-services">
+                        <li>Custom Software</li>
+                        <li>Web Development</li>
+                        <li>Cloud Solutions</li>
+                    </ul>
+                </div>
+                
+                <div class="sector-card">
+                    <div class="sector-icon">💰</div>
+                    <h3>Finance</h3>
+                    <p>Comprehensive financial advisory, investment management, and business financing solutions.</p>
+                    <ul class="sector-services">
+                        <li>Investment Advisory</li>
+                        <li>Business Funding</li>
+                        <li>Financial Planning</li>
+                    </ul>
+                </div>
+                
+                <div class="sector-card">
+                    <div class="sector-icon">⚖️</div>
+                    <h3>Legal Services</h3>
+                    <p>Expert legal consultation, and regulatory compliance solutions.</p>
+                    <ul class="sector-services">
+                        <li>Contract management</li>
+                        <li>Property Legal</li>
+                        <li>Compliance</li>
+                    </ul>
+                </div>
+                
+                <div class="sector-card">
+                    <div class="sector-icon">🌱</div>
+                    <h3>Renewable Energy</h3>
+                    <p>Sustainable energy solutions, renewable technology solutions and green technology implementations.</p>
+                    <ul class="sector-services">
+                        <li>Solar Solutions</li>
+                        <li>Green Tech</li>
+                        <li>Sustainability</li>
+                    </ul>
+                </div>
+                
+                <div class="sector-card">
+                    <div class="sector-icon">💼</div>
+                    <h3>Consultancy</h3>
+                    <p>Strategic business consulting, market research, and organizational development services.</p>
+                    <ul class="sector-services">
+                        <li>Strategy Consulting</li>
+                        <li>Market Research</li>
+                        <li>Business Planning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Achievements -->
+    <section class="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2>Key <span class="highlight">Achievements</span></h2>
+                <p>Milestones that define our journey of excellence and commitment to delivering exceptional results across all business sectors.</p>
+            </div>
+            
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h3>25+ Years of Excellence</h3>
+                    <p>Established in 2000, consistently delivering exceptional results across multiple business verticals.</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">👥</div>
+                    <h3>Multi-Sector Leadership</h3>
+                    <p>Diversified expertise across Real Estate, IT, Finance, Legal, and Renewable Energy sectors.</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">🤝</div>
+                    <h3>Trusted Partnerships</h3>
+                    <p>Long relationships with clients, investors, and government across multiple states.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose USB Group -->
+    <section class="why-choose" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose <span class="highlight">USB Group</span></h2>
+                <p>Our commitment to excellence, innovation, and client satisfaction sets us apart as a trusted partner for your business needs.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <div>
+                        <h3>Proven Track Record</h3>
+                        <p>25+ years of successful project delivery and business growth across multiple industries and sectors.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <div>
+                        <h3>Expert Leadership</h3>
+                        <p>Led by visionary founder Hira Shankar Bhartiya with deep industry expertise.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <div>
+                        <h3>Diversified Portfolio</h3>
+                        <p>Comprehensive expertise in real estate, IT, finance, legal, and renewable energy sectors.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <div>
+                        <h3>Client-Centric Approach</h3>
+                        <p>Tailored solutions and dedicated support delivering exceptional client value.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Partner with USB Group Organisation for comprehensive solutions across Real Estate, IT, Finance, Legal, and Renewable Energy sectors. Let's build success together.</p>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">Start Your Project</a>
+                <a href="#" class="btn-secondary">View Our Portfolio</a>
+            </div>
+            
+            <p style="margin-top: 2rem; opacity: 0.7;">Join hundreds of satisfied clients who trust USB Group for their business success.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>USB Group</h3>
+                    <p>Shaping Tomorrow with Innovation, Trust & Impact for over 25 years across multiple business sectors.</p>
+                    <p>📧 info@usbgroup.in</p>
+                    <p>📞 +91 93198 59929</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="./about.html">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#">Real Estate</a></li>
+                        <li><a href="#">IT & Software</a></li>
+                        <li><a href="#">Finance</a></li>
+                        <li><a href="#">Renewable Energy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Get In Touch</h3>
+                    <ul>
+                        <li><a href="#">📍 123 Business District</a></li>
+                        <li><a href="#">New Delhi, India 110001</a></li>
+                        <li><a href="#">info@usbgroup.in</a></li>
+                        <li><a href="#">+91 93198 59929</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+    <p>© 2025 USB Group Organisation. All rights reserved. | 
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Cookie Policy</a>
+    </p>
+    
+    <div class="social-links">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+</div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.98)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.sector-card, .achievement-card, .feature-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', function() {
+            // Toggle hamburger animation
+            this.classList.toggle('active');
+            
+            // Toggle mobile menu
+            navLinks.classList.toggle('mobile-active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('mobile-active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenu.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('mobile-active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('mobile-active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            const speed = scrolled * 0.5;
+            parallax.style.backgroundPositionY = speed + 'px';
+        });
+
+        // Add counter animation for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat h3');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/[^\d]/g, ''));
+                let count = 0;
+                const speed = target / 100;
+                
+                const updateCounter = () => {
+                    if (count < target) {
+                        count += speed;
+                        counter.textContent = Math.ceil(count) + (counter.textContent.includes('+') ? '+' : '');
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target + (counter.textContent.includes('+') ? '+' : '');
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        // Trigger counter animation when hero section is visible
+        const heroObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    heroObserver.disconnect();
+                }
+            });
+        });
+
+        heroObserver.observe(document.querySelector('.hero-stats'));
+    </script>
+</body>
+</html>
+:root{
+  --bg-main: #121212;
+  --bg-1: #151618;
+  --bg-2: #171a1d;
+  --card-gradient: linear-gradient(145deg, #161616, #121212);
+  --muted-text: #d6d9db;
+  --accent: #3b82f6;
+  --text: #eceff1;
+}
+
+/* global background/text */
+body{
+  background-color: var(--bg-main) !important;
+  color: var(--text) !important;
+}
+
+/* header */
+header{
+  background: rgba(17,18,20,0.86) !important;
+}
+
+/* hero overlay — slightly lighter overlay so background image shows */
+.hero{
+  background: linear-gradient(rgba(11,16,23,0.45), rgba(11,16,23,0.45)),
+              url('https://images.pexels.com/photos/462331/pexels-photo-462331.jpeg') !important;
+}
+
+/* section backgrounds */
+.sectors { background: var(--bg-1) !important; }
+.achievements { background: var(--bg-main) !important; }
+.why-choose { background: var(--bg-1) !important; }
+.cta-section { background: linear-gradient(45deg, #161616, #121212) !important; }
+
+/* cards / surfaces */
+.sector-card,
+.achievement-card,
+.feature-card {
+  background: var(--card-gradient) !important;
+  border-color: #222 !important;
+}
+
+/* footer */
+footer { background: #101214 !important; border-top-color: #212326 !important; color: var(--muted-text); }
+
+/* adjust small text */
+.section-header p,
+.hero p,
+footer p,
+.footer-section ul li a {
+  color: var(--muted-text) !important;
+}
+
+/* accent color remains same */
+.stat h3, .section-header h2 .highlight, .sector-icon { color: var(--accent) !important; }
+
+/* scrollbar */
+::-webkit-scrollbar-track { background: #0f1011 !important; }
+::-webkit-scrollbar-thumb { background: var(--accent) !important; }

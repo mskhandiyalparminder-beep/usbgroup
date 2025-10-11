@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USB Group - Key Projects</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #0D1B2A;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    /* Header */
+     header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            width: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img{
+            width: 100%;
+            border-radius: 10px;
+        }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #3b82f6;
+    }
+
+    .cta-button {
+      background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    .mobile-menu span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 3px 0;
+      transition: 0.4s;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* just below header */
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        padding: -4rem;
+        text-align: center;
+    }
+
+    .nav-links.mobile-active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 1rem 0;
+        display: block;
+    }
+
+      .mobile-menu {
+        display: flex;
+      }
+    }
+
+    /* Main */
+    main {
+      margin-top: 80px;
+      padding: 4rem 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero .highlight {
+      color: #4a9eff;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #cccccc;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+
+    .stat-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem 1rem;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #4a9eff;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #cccccc;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-image {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-price {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+
+    .project-content {
+      padding: 2rem;
+    }
+
+    .project-title {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .project-location {
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-description {
+      color: #ccc;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-highlights {
+      margin-bottom: 1.5rem;
+    }
+
+    .project-highlights h4 {
+      color: #4a9eff;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+
+    .highlight-item {
+      font-size: 0.8rem;
+      color: #aaa;
+      display: flex;
+      align-items: center;
+    }
+
+    .highlight-item::before {
+      content: "✓";
+      color: #4a9eff;
+      margin-right: 0.5rem;
+    }
+
+    .project-cta {
+      display: flex;
+      align-items: center;
+      color: #4a9eff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .project-cta:hover {
+      color: #66b3ff;
+    }
+
+    .project-cta::after {
+      content: "→";
+      margin-left: 0.5rem;
+      transition: transform 0.3s;
+    }
+
+    .project-cta:hover::after {
+      transform: translateX(5px);
+    }
+
+    /* Partnership */
+    .partnership {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .partnership h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .partnership p {
+      color: #ccc;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    .partnership-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #ccc;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .tab-btn.active,
+    .tab-btn:hover {
+      background: #4a9eff;
+      color: #fff;
+    }
+
+    /* Footer */
+    .footer {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 3rem 0 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+      color: #fff;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: #ccc;
+      font-size: 0.9rem;
+      text-decoration: none;
+      line-height: 1.8;
+      transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+      color: #4a9eff;
+    }
+
+    .footer-contact {
+      margin-top: 1rem;
+    }
+
+    .contact-us-btn {
+      background: linear-gradient(135deg, #4a9eff, #0066cc);
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      transition: transform 0.3s;
+    }
+
+    .contact-us-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      color: #888;
+      font-size: 0.8rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .cta-button{
+            display: none;
+        }
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .highlights-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+     <div class="logo">
+                <img src="./logo1.png" alt="">
+            </div>
+      <ul class="nav-links">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./founder.html">Founder</a></li>
+        <li><a href="./timeline.html">Timeline</a></li>
+        <li><a href="./projects.html">Projects</a></li>
+        <li><a href="./services.html">Services</a></li>
+        <li><a href="./impact.html">Impact</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+      <a href="#contact" class="cta-button">Get Started</a>
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <div class="container">
+      <!-- Hero -->
+      <section class="hero">
+        <h1>Key <span class="highlight">Projects</span></h1>
+        <p>Transforming landscapes and communities through strategic development initiatives</p>
+      </section>
+
+      <!-- Stats -->
+      <section class="stats">
+        <div class="stat-item">
+          <div class="stat-number">₹1500+</div>
+          <div class="stat-label">Crores Portfolio Value</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Major Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Cities Covered</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1000+</div>
+          <div class="stat-label">Units Delivered</div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80" alt="Mathura Vrindavan Premium Development">
+            <div class="project-price">₹250 Cr</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Mathura Vrindavan Premium Development</h3>
+            <div class="project-location">📍 Mathura, Vrindavan | 📅 2020-2023</div>
+            <p class="project-description">
+              Luxury residential and commercial complex featuring modern amenities, spiritual tourism facilities, and sustainable infrastructure designed for the holy cities.
+            </p>
+            <div class="project-highlights">
+              <h4>Key Highlights</h4>
+              <div class="highlights-grid">
+                <div class="highlight-item">500+ Premium Units</div>
+                <div class="highlight-item">Spiritual Tourism Hub</div>
+                <div class="highlight-item">Sustainable Design</div>
+                <div class="highlight-item">Modern Amenities</div>
+              </div>
+            </div>
+          
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1000&q=80" alt="Jewar Airport Infrastructure">
+            <div class="project-price">₹200 Cr</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Jewar Airport Infrastructure</h3>
+            <div class="project-location">📍 Jewar Airport, Delhi NCR | 📅 2022-2025</div>
+            <p class="project-description">
+              Major infrastructure development supporting India's largest airport project with cutting-edge facilities and strategic connectivity solutions.
+            </p>
+            <div class="project-highlights">
+              <h4>Key Highlights</h4>
+              <div class="highlights-grid">
+                <div class="highlight-item">Major Airport Infrastructure</div>
+                <div class="highlight-item">Strategic Connectivity</div>
+                <div class="highlight-item">Modern Facilities</div>
+                <div class="highlight-item">Future-Ready Design</div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Partnership -->
+      <section class="partnership">
+        <h2>Partnership Excellence</h2>
+        <p>Our success is built on strategic partnerships with established companies, government entities, and industry leaders. These collaborations enable us to deliver world-class projects that set new standards in quality and innovation.</p>
+        <div class="partnership-tabs">
+          <button class="tab-btn">Government Partnerships</button>
+          <button class="tab-btn">Industry Leaders</button>
+          <button class="tab-btn">International Collaborations</button>
+          <button class="tab-btn">Technology Partners</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>USB Group</h3>
+          <p>Shaping Tomorrow with Innovation, Trust & Impact. 25+ years of excellence across real estate, IT, finance, consultancy, legal services and energy.</p>
+          <div class="footer-contact">
+            <p>📞 +91 93198 59929</p>
+            <p>📧 info@usbgroup.com</p>
+            <p>📍 Delhi NCR, India</p>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <p><a href="#about">About Us</a></p>
+          <p><a href="#founder">Our Founder</a></p>
+          <p><a href="#timeline">Timeline</a></p>
+          <p><a href="#projects">Key Projects</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Our Services</h3>
+          <p><a href="#realestate">Real Estate</a></p>
+          <p><a href="#it">IT & Software</a></p>
+          <p><a href="#finance">Financial Consulting</a></p>
+          <p><a href="#energy">Renewable Energy</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Get In Touch</h3>
+          <p>Ready to start your next project? Contact us for a free consultation.</p>
+          <button class="contact-us-btn">Contact Us</button>
+          <p style="margin-top: 1rem; font-size: 0.8rem;">Available Mon-Fri 9AM-6PM, Sat 9AM-2PM</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 USB Group Organisation. All rights reserved. | 
+        <a href="#privacy">Privacy Policy</a> | 
+        <a href="#terms">Terms of Service</a> | 
+        <a href="#cookies">Cookie Policy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-active');
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('mobile-active');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Partnership tabs
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(0, 0, 0, 0.98)';
+      } else {
+        header.style.background = 'rgba(0, 0, 0, 0.95)';
+      }
+    });
+  </script>
+</body>
+</html>

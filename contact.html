@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USB Group - Get In Touch</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0D1B2A;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 6rem 0 2rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .hero-title .highlight {
+            color: #4a9eff;
+        }
+
+        .hero-subtitle {
+            color: #ccc;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Main Content */
+        .contact-main {
+            padding: 3rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Contact Information */
+        .contact-info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-info-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .contact-card {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(74, 158, 255, 0.15);
+        }
+
+        .contact-card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            background-color: #4a9eff;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-card-title {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .contact-details p {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-details a {
+            color: #4a9eff;
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Form */
+        .contact-form-section {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 2.5rem;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .required {
+            color: #ff4757;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: #fff;
+            font-size: 0.95rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #4a9eff;
+            box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: #666;
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .form-select option {
+            background-color: #111;
+            color: #fff;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #4a9eff, #3a8eef);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #3a8eef, #2a7edf);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 158, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #4a9eff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: #4a9eff;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            gap: 0.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom-left {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .footer-bottom-right {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-bottom-right a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        .footer-bottom-right a:hover {
+            color: #4a9eff;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #2a4d8a, #4a6eaa);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .cta-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .cta-subtitle {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .cta-button {
+            background-color: #4a9eff;
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+
+        .mobile-menu.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+        .cta-button:hover {
+            background-color: #3a8eef;
+        }
+
+        .availability {
+            color: #aaa;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        /* Icons */
+        .icon-phone::before { content: "📞"; }
+        .icon-email::before { content: "✉️"; }
+        .icon-location::before { content: "📍"; }
+        .icon-clock::before { content: "🕒"; }
+        .icon-send::before { content: "➤"; }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .contact-main {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* just below header */
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 1rem; /* Fixed: was -4rem */
+        text-align: center;
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    /* Change mobile-active to active */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 1rem 0;
+        display: block;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Add the hover effect for mobile too */
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: white;
+        transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .mobile-menu {
+        display: flex;
+    }
+}
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .contact-form-section {
+                padding: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-bottom-right {
+                justify-content: center;
+            }
+        
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .contact-form-section {
+                padding: 1.5rem;
+            }
+
+            .contact-card {
+                padding: 1.2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Form Validation Styles */
+        .form-input.error, .form-select.error, .form-textarea.error {
+            border-color: #ff4757;
+        }
+
+        .error-message {
+            color: #ff4757;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        .success-message {
+            background-color: rgba(0, 208, 132, 0.1);
+            border: 1px solid #00d084;
+            color: #00d084;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Loading state */
+        .submit-btn.loading {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .submit-btn.loading::after {
+            content: "";
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 0.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+    <nav>
+        <div class="logo">USB Group</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./founder.html">Founder</a></li>
+            <li><a href="./timeline.html">Timeline</a></li>
+            <li><a href="./projects.html">Projects</a></li>
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="./impact.html">Impact</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+        <a href="#contact" class="cta-button">Get Started</a>
+        <div class="mobile-menu" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+    </nav>
+</header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Get In <span class="highlight">Touch</span></h1>
+            <p class="hero-subtitle">Ready to partner with us? Contact our team for expert consultation and discover how we can help transform your business vision into reality.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="container">
+        <div class="contact-main">
+            <!-- Contact Information -->
+            <div class="contact-info-section">
+                <h2 class="contact-info-title">Contact Information</h2>
+                
+                <!-- Phone -->
+                <div class="contact-card">
+                    <div class="contact-card-header">
+                        <div class="contact-icon icon-phone"></div>
+                        <div class="contact-card-title">Phone</div>
+                    </div>
+                    <div class="contact-details">
+                        <p><a href="tel:+919376850929">+91 93198 59929</a></p>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="contact-card">
+                    <div class="contact-card-header">
+                        <div class="contact-icon icon-email"></div>
+                        <div class="contact-card-title">Email</div>
+                    </div>
+                    <div class="contact-details">
+                        <p><a href="mailto:info@usbgroup.com">info@usbgroup.com</a></p>
+                        <p><a href="mailto:usbindia.consultancy@gmail.com">usbindia.consultancy@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <!-- Head Office -->
+                <div class="contact-card">
+                    <div class="contact-card-header">
+                        <div class="contact-icon icon-location"></div>
+                        <div class="contact-card-title">Head Office</div>
+                    </div>
+                    <div class="contact-details">
+                        <p>USB Group Organization</p>
+                        <p>Delhi NCR, India</p>
+                    </div>
+                </div>
+
+                <!-- Business Hours -->
+                <div class="contact-card">
+                    <div class="contact-card-header">
+                        <div class="contact-icon icon-clock"></div>
+                        <div class="contact-card-title">Business Hours</div>
+                    </div>
+                    <div class="contact-details">
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                        <p>Saturday: 9:00 AM - 2:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+                <h2 class="form-title">Send Us a Message</h2>
+                
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Full Name <span class="required">*</span></label>
+                            <input type="text" class="form-input" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                            <div class="error-message" id="fullNameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Address <span class="required">*</span></label>
+                            <input type="email" class="form-input" id="email" name="email" placeholder="Enter your email" required>
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-input" id="phone" name="phone" placeholder="+91 XXXXX XXXXX">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Company Name</label>
+                            <input type="text" class="form-input" id="company" name="company" placeholder="Enter company name">
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="form-label">Service of Interest</label>
+                            <select class="form-select" id="service" name="service">
+                                <option value="">Select a service...</option>
+                                <option value="bio-cbg">Bio-CBG Solutions</option>
+                                <option value="insurance">Insurance</option>
+                                <option value="government-liaising">Government Liaising</option>
+                                <option value="business-consulting">Strategic Business Consulting</option>
+                                <option value="real-estate">Real Estate</option>
+                                <option value="it-software">IT & Software</option>
+                                <option value="finance">Finance</option>
+                                <option value="legal">Legal Services</option>
+                                <option value="renewable-energy">Renewable Energy</option>
+                                <option value="general-consultancy">General Consultancy</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="form-label">Message <span class="required">*</span></label>
+                            <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your project requirements..." required></textarea>
+                            <div class="error-message" id="messageError"></div>
+                        </div>
+                    </div>
+                    <div id="successMessage" class="success-message" style="display: none;">
+                        Thank you for your message! We'll get back to you within 24 hours.
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="icon-send"></span> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>USB Group</h3>
+                    <p>Shaping Tomorrow with Innovation, Trust & Impact. 25+ years of excellence across the globe in Multiple Consultancy, Bio CBG generation business.</p>
+                    <div class="footer-contact-info">
+                        <span class="icon-phone"></span>
+                        <span>+91 93198 59929</span>
+                    </div>
+                    <div class="footer-contact-info">
+                        <span class="icon-email"></span>
+                        <span>usbindia.consultancy@gmail.com</span>
+                    </div>
+                    <div class="footer-contact-info">
+                        <span class="icon-location"></span>
+                        <span>Delhi NCR, India</span>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">About Us</a></li>
+                        <li><a href="#founder">Our Founder</a></li>
+                        <li><a href="#timeline">Timeline</a></li>
+                        <li><a href="#projects">Key Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Bio Estate</a></li>
+                        <li><a href="#services">IT & Software</a></li>
+                        <li><a href="#services">Financial Consulting</a></li>
+                        <li><a href="#services">Renewable Energy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Get In Touch</h3>
+                    <div class="cta-section">
+                        <div class="cta-title">Ready to start your next project?</div>
+                        <div class="cta-subtitle">Contact us for a free consultation!</div>
+                        <a href="#contact" class="cta-button">
+                            Contact Us <span class="icon-send"></span>
+                        </a>
+                        <div class="availability">Available Mon-Fri 9AM-6PM, Sat: 9AM-2PM</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-left">
+                    © 2025 USB Group Organisation. All rights reserved.
+                </div>
+                <div class="footer-bottom-right">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#cookies">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+        const navLinks = document.getElementById('navLinks');
+        navLinks.classList.toggle('active');
+        
+        // Optional: Toggle mobile menu animation
+        const mobileMenu = document.querySelector('.mobile-menu');
+        mobileMenu.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            const navLinks = document.getElementById('navLinks');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            navLinks.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        });
+    });
+
+        // Form validation and submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.textContent = '';
+            });
+            document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(input => {
+                input.classList.remove('error');
+            });
+
+            // Validate form
+            let isValid = true;
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!fullName) {
+                showError('fullNameError', 'Full name is required');
+                document.getElementById('fullName').classList.add('error');
+                isValid = false;
+            }
+
+            if (!email) {
+                showError('emailError', 'Email address is required');
+                document.getElementById('email').classList.add('error');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showError('emailError', 'Please enter a valid email address');
+                document.getElementById('email').classList.add('error');
+                isValid = false;
+            }
+
+            if (!message) {
+                showError('messageError', 'Message is required');
+                document.getElementById('message').classList.add('error');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            // Show loading state
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+
+            // Simulate form submission (replace with actual API call)
+            setTimeout(() => {
+                // Show success message
+                successMessage.style.display = 'block';
+                form.reset();
+                
+                // Reset button state
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }, 2000);
+        }
+
+        function showError(elementId, message) {
+            document.getElementById(elementId).textContent = message;
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Real-time validation
+        document.getElementById('email').addEventListener('blur', function() {
+            const email = this.value.trim();
+            const errorElement = document.getElementById('emailError');
+            
+            if (email && !isValidEmail(email)) {
+                this.classList.add('error');
+                showError('emailError', 'Please enter a valid email address');
+            } else {
+                this.classList.remove('error');
+                errorElement.textContent = '';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Auto-resize textarea
+        document.getElementById('message').addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        });
+    </script>
+</body>
+</html>

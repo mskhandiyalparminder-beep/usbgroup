@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USB Group - Professional Services</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0D1B2A;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            width: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img{
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                /* just below header */
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.95);
+                padding: -4rem;
+                text-align: center;
+            }
+
+            .nav-links.mobile-active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem 0;
+                display: block;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .cta-button {
+                display: none;
+            }
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 4rem 0;
+        }
+
+        .services-title {
+            text-align: center;
+            font-size: 4rem;
+            margin-bottom: 3.5rem;
+            margin-top: 100px
+        }
+
+            color: #c2a148;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #333;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(74, 158, 255, 0.2);
+        }
+
+        .service-icon {
+            color: #4a9eff;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            color: #d6a152;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: #ccc;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            color: #aaa;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: "●";
+            color: #4a9eff;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Bio-CBG Initiative */
+        .bio-cbg-section {
+            background: linear-gradient(135deg, #1a4d3a, #2a5d4a);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bio-cbg-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .bio-cbg-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .bio-cbg-text p {
+            color: #ccc;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .get-bio-cbg-btn {
+            background-color: #00d084;
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .get-bio-cbg-btn:hover {
+            background-color: #00b874;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .impact-item {
+            text-align: center;
+        }
+
+        .impact-icon {
+            font-size: 3rem;
+            color: #00d084;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .impact-title {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-subtitle {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        /* Why Choose Us */
+        .why-choose-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .why-choose-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .why-choose-card {
+            background-color: #1a1a1a;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .why-choose-icon {
+            font-size: 3rem;
+            color: #4a9eff;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .why-choose-card h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .why-choose-card p {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #2a4d8a, #4a6eaa);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .cta-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .cta-subtitle {
+            color: #ccc;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn-primary,
+        .cta-btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn-primary {
+            background-color: #4a9eff;
+            color: white;
+        }
+
+        .cta-btn-primary:hover {
+            background-color: #3a8eef;
+        }
+
+        .cta-btn-secondary {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .cta-btn-secondary:hover {
+            background-color: #fff;
+            color: #2a4d8a;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #4a9eff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: #4a9eff;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            text-align: center;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #111;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                margin-bottom: 1rem;
+            }
+
+            .bio-cbg-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-title,
+            .why-choose-title,
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .bio-cbg-text h2 {
+                font-size: 1.5rem;
+            }
+
+            .bio-cbg-section {
+                padding: 2rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .services-title,
+            .why-choose-title,
+            .cta-title {
+                font-size: 1.8rem;
+            }
+
+            .bio-cbg-section {
+                padding: 1.5rem;
+            }
+
+            .impact-grid {
+                gap: 1rem;
+            }
+        }
+
+        /* Icons using CSS shapes */
+        .icon-building::before {
+            content: "🏢";
+        }
+
+        .icon-shield::before {
+            content: "🛡️";
+        }
+
+        .icon-government::before {
+            content: "🏛️";
+        }
+
+        .icon-chart::before {
+            content: "📊";
+        }
+
+        .icon-home::before {
+            content: "🏠";
+        }
+
+        .icon-computer::before {
+            content: "💻";
+        }
+
+        .icon-dollar::before {
+            content: "💰";
+        }
+
+        .icon-legal::before {
+            content: "⚖️";
+        }
+
+        .icon-energy::before {
+            content: "⚡";
+        }
+
+        .icon-consulting::before {
+            content: "💼";
+        }
+
+        .icon-leaf::before {
+            content: "🌿";
+        }
+
+        .icon-recycle::before {
+            content: "♻️";
+        }
+
+        .icon-waste::before {
+            content: "🗑️";
+        }
+
+        .icon-battery::before {
+            content: "🔋";
+        }
+
+        .icon-team::before {
+            content: "👥";
+        }
+
+        .icon-target::before {
+            content: "🎯";
+        }
+
+        .icon-handshake::before {
+            content: "🤝";
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #4a9eff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: #4a9eff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            text-align: center;
+            color: #666;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+<div class="logo">
+                <img src="./logo1.png" alt="">
+            </div>            <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./founder.html">Founder</a></li>
+                <li><a href="./timeline.html">Timeline</a></li>
+                <li><a href="./projects.html">Projects</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./impact.html">Impact</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+            <a href="#contact" class="cta-button">Get Started</a>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="services-title">Our Services</h2>
+            <div class="services-grid">
+                <!-- Bio-CBG Solutions -->
+                <div class="service-card">
+                    <div class="service-icon icon-building"></div>
+                    <h3>Bio-CBG Solutions</h3>
+                    <p>We deliver comprehensive compressed biogas solutions that transform agricultural waste into sustainable energy. Our approach not only supports waste-to-energy conversion but also drives rural employment opportunities, sustainable production practices, and carbon credit generation for a cleaner future.</p>
+                </div>
+                <!-- Insurance -->
+                <div class="service-card">
+                    <div class="service-icon icon-shield"></div>
+                    <h3>Insurance</h3>
+                    <p>Our insurance solutions are designed to protect individuals and families with robust coverage options. From life and health insurance to general and term policies, we provide financial stability, peace of mind, and long-term security at every stage of life.</p>
+                </div>
+                <!-- Government Liaising -->
+                <div class="service-card">
+                    <div class="service-icon icon-government"></div>
+                    <h3>Government Laisoning</h3>
+                    <p>We simplify complex regulatory processes through strategic government liaisoning. Our team ensures seamless navigation of policy frameworks, regulatory compliance, and permit approvals while fostering partnerships that enable efficient project execution.</p>
+                </div>
+                <!-- Strategic Business Consulting -->
+                <div class="service-card">
+                    <div class="service-icon icon-chart"></div>
+                    <h3>Strategic Business Consulting</h3>
+                    <p>Our consulting practice empowers businesses to scale with confidence. Through in-depth market analysis, growth planning, risk assessment, and tailored implementation roadmaps, we help organizations unlock new opportunities and achieve operational excellence.
+                    </p>
+                </div>
+                <!-- Real Estate -->
+                <div class="service-card">
+                    <div class="service-icon icon-home"></div>
+                    <h3>Real Estate</h3>
+                    <p>We provide premium real estate solutions across residential and commercial markets. Our services include project development, investment advisory, property management, and end-to-end commercial solutions tailored to evolving industry demands.</p>
+                </div>
+                <!-- IT & Software -->
+                <div class="service-card">
+                    <div class="service-icon icon-computer"></div>
+                    <h3>IT & Software</h3>
+                    <p>From custom software development to mobile and web applications, we deliver cutting-edge IT solutions. Our technology services help businesses modernize operations, enhance user experiences, and stay competitive in a digital-first world.</p>
+                </div>
+                <!-- Finance -->
+                <div class="service-card">
+                    <div class="service-icon icon-dollar"></div>
+                    <h3>Finance</h3>
+                    <p>Our financial consulting services provide businesses with strategic guidance on planning, investment, and risk management. With expertise in corporate finance and investment advisory, we design frameworks that ensure sustainable growth and profitability.</p>
+                 </div>   
+                <!-- Legal Services -->
+                <div class="service-card">
+                    <div class="service-icon icon-legal"></div>
+                    <h3>Legal Services</h3>
+                    <p>We offer expert legal consulting to help organizations manage compliance and risk. Our services cover contract management, dispute resolution, and regulatory guidance, ensuring clients operate with confidence in complex legal environments.</p>
+                </div>
+                <!-- Renewable Energy -->
+                <div class="service-card">
+                    <div class="service-icon icon-energy"></div>
+                    <h3>Renewable Energy</h3>
+                    <p>Through solar, bio-CBG, and other renewable energy initiatives, we advance sustainable power generation. Our solutions focus on energy efficiency, carbon credit opportunities, and eco-friendly infrastructure for a greener tomorrow.</p>
+                </div>
+                <!-- Consultancy -->
+                <div class="service-card">
+                    <div class="service-icon icon-consulting"></div>
+                    <h3>Consultancy</h3>
+                    <p>Our consultancy division delivers strategic business and operational excellence services. We focus on long-term growth planning, market research, and performance improvement to help businesses adapt and thrive in evolving industries.</p>
+                </div>
+                            <!-- Sustainability & Rural Upliftment -->
+    <div class="service-card">
+        <div class="service-icon icon-consulting"></div>
+        <h3>Sustainability & Rural Upliftment</h3>
+        <p>We champion sustainable development by building eco-friendly infrastructure and creating livelihood opportunities for rural communities. Our initiatives link farmers, artisans, and weavers to markets while promoting environmental awareness and inclusive growth.</p>
+    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bio-CBG Initiative Spotlight -->
+    <section class="bio-cbg-section">
+        <div class="container">
+            <div class="bio-cbg-content">
+                <div class="bio-cbg-text">
+                    <h2>Transforming Agricultural Waste into Clean Energy</h2>
+                    <p>Our Bio-CBG (Compressed Biogas) Initiative represents a revolutionary approach to sustainable
+                        energy production. By converting agricultural waste into clean, renewable energy, we're creating
+                        a circular economy that benefits both farmers, the environment, and energy consumers.</p>
+                    <button class="get-bio-cbg-btn">Get Bio-CBG Quote →</button>
+                </div>
+                <div class="impact-grid">
+                    <div class="impact-item"> <span class="impact-icon icon-leaf"></span>
+                        <div class="impact-title">Environmental Impact</div>
+                        <div class="impact-subtitle">Carbon Neutral Energy</div>
+                    </div>
+                    <div class="impact-item"> <span class="impact-icon icon-dollar"></span>
+                        <div class="impact-title">Rural Employment</div>
+                        <div class="impact-subtitle">Farmers' Additional Income</div>
+                    </div>
+                    <div class="impact-item"> <span class="impact-icon icon-recycle"></span>
+                        <div class="impact-title">Waste Management</div>
+                        <div class="impact-subtitle">Agricultural Waste Recycling</div>
+                    </div>
+                    <div class="impact-item"> <span class="impact-icon icon-battery"></span>
+                        <div class="impact-title">Energy Production</div>
+                        <div class="impact-subtitle">Compressed Biogas Energy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- Why Choose USB Sudha Consultancy -->
+    <section class="why-choose-section">
+        <div class="container">
+            <h2 class="why-choose-title">Why Choose USB Sudha Consultancy?</h2>
+            <div class="why-choose-grid">
+                <div class="why-choose-card">
+                    <div class="why-choose-icon icon-team"></div>
+                    <h3>Expert Team</h3>
+                    <p>25+ years of combined expertise in renewable energy, government relations, and strategic
+                        consulting across multiple sectors.</p>
+                </div>
+                <div class="why-choose-card">
+                    <div class="why-choose-icon icon-target"></div>
+                    <h3>Proven Results</h3>
+                    <p>Track record of successful project implementations with measurable impact on sustainability goals
+                        and business growth.</p>
+                </div>
+                <div class="why-choose-card">
+                    <div class="why-choose-icon icon-handshake"></div>
+                    <h3>Government Relations</h3>
+                    <p>Strong relationships with government bodies ensuring smooth project approval and regulatory
+                        compliance.</p>
+                </div>
+            </div>
+        </div>
+    </section> <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ready to Transform Your Business?</h2>
+            <p class="cta-subtitle">Partner with USB Sudha Consultancy for sustainable solutions that drive growth,
+                ensure compliance, and create lasting positive impact.</p>
+            <div class="cta-buttons"> <a href="#contact" class="cta-btn-primary">Get Free Consultation →</a> <a
+                    href="#projects" class="cta-btn-secondary">Download Brochure</a> </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>USB Group</h3>
+                    <p>Shaping Sustainable Innovation. Trust & Impact.</p>
+                    <p>📧 info@usbsudha.com</p>
+                    <p>📞 Call: +91 93198 59929</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#about">About Us</a></p>
+                    <p><a href="#founder">Our Founder</a></p>
+                    <p><a href="#timeline">Timeline</a></p>
+                    <p><a href="#projects">Key Projects</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Services</h3>
+                    <p><a href="#services">Bio-CBG</a></p>
+                    <p><a href="#services">IT & Software</a></p>
+                    <p><a href="#services">Strategic Consulting</a></p>
+                    <p><a href="#services">Renewable Energy</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Get In Touch</h3>
+                    <p>Ready to start your next project? Contact us for a free consultation!</p>
+                    <p>Available Mon-Fri 9AM–6PM, Sat 9AM–2PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 USB Group Organization. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        // Toggle menu
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Scroll animations
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        fadeEls.forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>

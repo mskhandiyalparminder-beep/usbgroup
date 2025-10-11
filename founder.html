@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USB Group - Meet Our Chairman & CEO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0d3c52;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Header */
+      header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            width: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img{
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            margin-top: 5rem;
+        }
+
+        .hero .highlight {
+            color: #4a90e2;
+        }
+
+        .hero p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .profile-image {
+            text-align: center;
+        }
+
+        .profile-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-name {
+            margin-top: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 300;
+        }
+
+        .profile-title {
+            color: #4a90e2;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        .profile-info {
+            padding-left: 2rem;
+        }
+
+        .quote {
+            background-color: #1a1a1a;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: #4a90e2;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+        }
+
+        .quote p {
+            font-style: italic;
+            color: #cccccc;
+            margin-bottom: 1rem;
+        }
+
+        .quote-author {
+            color: #4a90e2;
+            font-size: 0.9rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .section-content p {
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+        }
+
+        .achievements {
+            margin-top: 2rem;
+        }
+
+        .achievement-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        .achievement-item::before {
+            content: '•';
+            color: #4a90e2;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Leadership Philosophy */
+        .leadership-philosophy {
+            background-color: #0D1B2A;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .philosophy-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .philosophy-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .philosophy-item {
+            background-color: #1a1a1a;
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .philosophy-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .philosophy-icon {
+            font-size: 3rem;
+            color: #4a90e2;
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-item p {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0a0a0a;
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: #4a90e2;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #4a90e2;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+
+        .footer-contact {
+            background-color: #4a90e2;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .profile-info {
+                padding-left: 0;
+            }
+
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+.cta-button{
+    display: none;
+}
+
+            .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* just below header */
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        padding: -4rem;
+        text-align: center;
+    }
+
+    .nav-links.mobile-active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 1rem 0;
+        display: block;
+    }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .profile-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .achievement-list {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .philosophy-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .main-content {
+                padding: 0 1rem;
+            }
+
+            .quote {
+                padding: 1.5rem;
+            }
+
+            .leadership-philosophy {
+                padding: 2rem 1rem;
+         
+            .footer {
+                padding: 2rem 1rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+             <div class="logo">
+                <img src="./logo1.png" alt="">
+            </div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./founder.html">Founder</a></li>
+                <li><a href="./timeline.html">Timeline</a></li>
+                <li><a href="./projects.html">Projects</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./impact.html">Impact</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+            <a href="#contact" class="cta-button">Get Started</a>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Meet Our <span class="highlight">Chairman & CEO</span></h1>
+        <p>Leadership with Purpose: Driving Innovation and Excellence Across Industries</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="profile-image">
+            <img src="./Founder.png" alt="Uma Shankar Bhardwaj">
+            <h2 class="profile-name">Uma Shankar Bhardwaj</h2>
+            <p class="profile-title">Chairman & CEO</p>
+            <div class="profile-stats">
+                <div class="stat">25+ Years Experience</div>
+                <div class="stat">8 Business Sectors</div>
+                <div class="stat">Visionary Leader</div>
+            </div>
+        </div>
+
+        <div class="profile-info">
+            <div class="quote">
+                <p>"Success in business isn't just about profit - it's about creating lasting value for society while building enterprises that stand the test of time."</p>
+                <div class="quote-author">- Uma Shankar Bhardwaj</div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Professional Background</h3>
+                <div class="section-content">
+                    <p>With over two and a half decades of entrepreneurial excellence, Uma Shankar Bhardwaj has built USB Group into a formidable multi-sector organization. His leadership philosophy of "Profit with Purpose" has guided the company's expansion across real estate, technology, finance, and renewable energy sectors.</p>
+                    <p>Under his visionary guidance, USB Group has successfully delivered major projects worth over ₹1500 crores, establishing strategic partnerships with government entities and driving innovation in sustainable business practices.</p>
+                </div>
+            </div>
+
+            <div class="achievements">
+                <h3 class="section-title">Key Achievements</h3>
+                <div class="achievement-list">
+                    <div class="achievement-item">25+ years of entrepreneurial experience</div>
+                    <div class="achievement-item">Multi-sector business leadership</div>
+                    <div class="achievement-item">₹1500+ Cr portfolio management</div>
+                    <div class="achievement-item">Strategic government partnerships</div>
+                    <div class="achievement-item">Renewable energy innovation pioneer</div>
+                    <div class="achievement-item">Community development advocate</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Leadership Philosophy -->
+    <section class="leadership-philosophy">
+        <h2 class="philosophy-title">Leadership Philosophy</h2>
+        <div class="philosophy-grid">
+            <div class="philosophy-item">
+                <div class="philosophy-icon">🔮</div>
+                <h3>Visionary Leadership</h3>
+                <p>Transforming ideas into industry-leading enterprises across multiple sectors.</p>
+            </div>
+            <div class="philosophy-item">
+                <div class="philosophy-icon">📈</div>
+                <h3>Strategic Growth</h3>
+                <p>Driving exponential business growth through innovation and strategic partnerships.</p>
+            </div>
+            <div class="philosophy-item">
+                <div class="philosophy-icon">💙</div>
+                <h3>Social Impact</h3>
+                <p>Committed to creating positive change through business excellence and community service.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo">
+                    <span class="usb">USB</span> <span class="group">Group</span>
+                </div>
+                <p style="color: #cccccc; margin-top: 1rem;">Shaping Tomorrow with Innovation, Trust & Impact. 25+ years of excellence across real estate, IT, finance, consultancy, legal services, and renewable energy.</p>
+                <p style="color: #cccccc; margin-top: 1rem;">📞 +91 93198 59929</p>
+                <p style="color: #cccccc;">✉️ info@usbgroup.com</p>
+                <p style="color: #cccccc;">📍 Delhi NCR, India</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#founder">Our Founder</a></li>
+                    <li><a href="#timeline">Timeline</a></li>
+                    <li><a href="#projects">Key Projects</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="#real-estate">Real Estate</a></li>
+                    <li><a href="#it-services">IT Services</a></li>
+                    <li><a href="#financial">Financial Consulting</a></li>
+                    <li><a href="#renewable">Renewable Energy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Get In Touch</h3>
+                <p style="color: #cccccc; margin-bottom: 1rem;">Ready to start your next project? Contact us for a free consultation.</p>
+                <a href="#contact" class="footer-contact">Contact Us →</a>
+                <p style="color: #666; font-size: 0.9rem; margin-top: 1rem;">Available Mon-Fri 9AM-6PM, Sat: 9AM-2PM</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 USB Group Organisation. All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a> | <a href="#cookies">Cookie Policy</a></p>
+        </div>
+    </footer>
+
+    <!-- ✅ Clean Script -->
+    <script>
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('mobile-active');
+            mobileMenu.classList.toggle('open');
+        });
+
+        // Close when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-active');
+                mobileMenu.classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+</html>
