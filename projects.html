@@ -127,31 +127,74 @@
     </nav>
   </header>
 
-  <main>
-    <div class="container">
-      <section class="hero">
-        <h1>Key <span class="highlight">Projects</span></h1>
-        <p>Transforming landscapes and communities through strategic development initiatives</p>
-      </section>
-      <!-- Stats -->
-      <section class="stats">
-        <div class="stat-item">
-          <div class="stat-number">₹300+</div>
-          <div class="stat-label">Crores Portfolio Value</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">4</div>
-          <div class="stat-label">Major Projects</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">5+</div>
-          <div class="stat-label">Cities Covered</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">1000+</div>
-          <div class="stat-label">Units Delivered</div>
-        </div>
-      </section>
+   /* Main */
+    main {
+      margin-top: 80px;
+      padding: 4rem 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero .highlight {
+      color: #4a9eff;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #cccccc;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+
+    .stat-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem 1rem;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #4a9eff;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #cccccc;
+    }
 
       <section class="projects-grid">
 
@@ -281,4 +324,5 @@
   </footer>
 </body>
 </html>
+
 
