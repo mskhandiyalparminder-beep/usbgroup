@@ -1,147 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USB Group - Professional Services</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USB Group - Projects</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Arial',sans-serif;background-color:#0D1B2A;color:#fff;line-height:1.6;}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px;}
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #0D1B2A;
-            color: #ffffff;
-            line-height: 1.6;
-        }
+    /* Header */
+    header{position:fixed;top:0;left:0;right:0;background:rgba(0,0,0,0.95);backdrop-filter:blur(10px);z-index:1000;padding:1rem 0;}
+    nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem;}
+    .logo{width:120px;display:flex;align-items:center;}
+    .logo img{width:100%;border-radius:10px;}
+    .nav-links{display:flex;list-style:none;gap:2rem;}
+    .nav-links a{color:#ece5e5;text-decoration:none;transition:color 0.3s;}
+    .nav-links a:hover{color:#3b82f6;}
+    .cta-button{background:linear-gradient(45deg,#3b82f6,#1d4ed8);color:#fff;padding:.75rem 1.5rem;border:none;border-radius:25px;text-decoration:none;font-weight:600;transition:0.3s;}
+    .cta-button:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(59,130,246,0.3);}
+    .mobile-menu{display:none;flex-direction:column;cursor:pointer;}
+    .mobile-menu span{width:25px;height:3px;background:#fff;margin:3px 0;transition:0.3s;}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    /* Hero */
+    .hero{padding:6rem 0 2rem;text-align:center;}
+    .hero h1{font-size:2.8rem;margin-bottom:1rem;}
+    .hero .highlight{color:#4a9eff;}
+    .hero p{color:#ccc;font-size:1.1rem;max-width:700px;margin:0 auto;}
 
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-        }
+    /* Stats */
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;text-align:center;margin:3rem 0;}
+    .stat-number{font-size:2rem;font-weight:bold;color:#4a9eff;}
+    .stat-label{font-size:1rem;color:#ccc;margin-top:.5rem;}
 
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
+    /* Projects */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2rem;margin:4rem 0;}
+    .project-card{background:#1a1a1a;border:1px solid #333;border-radius:15px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;}
+    .project-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(74,158,255,0.2);}
+    .project-image img{width:100%;height:220px;object-fit:cover;}
+    .project-content{padding:1.5rem;}
+    .project-title{font-size:1.5rem;color:#fff;margin-bottom:.5rem;}
+    .project-location{font-size:.9rem;color:#aaa;margin-bottom:1rem;}
+    .project-description{color:#ccc;margin-bottom:1rem;line-height:1.6;}
+    .project-highlights h4{color:#4a9eff;margin-bottom:.5rem;}
+    .highlights-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem;}
+    .highlight-item{background:#222;padding:.5rem;border-radius:8px;font-size:.85rem;color:#ccc;text-align:center;}
 
-        .logo {
-            width: 120px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    /* Footer */
+    footer{background:#111;padding:3rem 0 1rem;}
+    .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem;}
+    .footer-section h3{color:#4a9eff;margin-bottom:1rem;font-size:1.2rem;}
+    .footer-section p,.footer-section a{color:#ccc;font-size:.9rem;line-height:1.6;text-decoration:none;}
+    .footer-section a:hover{color:#4a9eff;}
+    .footer-links{list-style:none;}
+    .footer-links li{margin-bottom:.5rem;}
+    .footer-bottom{border-top:1px solid #333;padding-top:1rem;text-align:center;color:#666;font-size:.8rem;}
 
-        .logo img{
-            width: 100%;
-            border-radius: 10px;
-        }
+    /* Responsive */
+    @media(max-width:768px){
+      .nav-links{display:none;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:rgba(0,0,0,0.95);padding:1rem;text-align:center;border-radius:0 0 12px 12px;}
+      .nav-links.active{display:flex;}
+      .mobile-menu{display:flex;}
+      nav .cta-button{display:none;}
+    }
+    @media(max-width:480px){
+      .hero h1{font-size:2rem;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo"><img src="./logo1.png" alt="USB Logo"></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./founder.html">Founder</a></li>
+        <li><a href="./timeline.html">Timeline</a></li>
+        <li><a href="./projects.html">Projects</a></li>
+        <li><a href="./services.html">Services</a></li>
+        <li><a href="./impact.html">Impact</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+      <a href="#contact" class="cta-button">Get Started</a>
+      <div class="mobile-menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </header>
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #3b82f6;
-        }
-
-        .cta-button {
-            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                /* just below header */
-                left: 0;
-                right: 0;
-                background: rgba(0, 0, 0, 0.95);
-                padding: -4rem;
-                text-align: center;
-            }
-
-            .nav-links.mobile-active {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 1rem 0;
-                display: block;
-            }
-
-            .mobile-menu {
-                display: flex;
-            }
-
-            .cta-button {
-                display: none;
-            }
-        }
-
-  <!-- Main -->
+  <!-- Hero -->
   <main>
     <div class="container">
-      <!-- Hero -->
       <section class="hero">
         <h1>Our <span class="highlight">Projects</span></h1>
         <p>Shaping sustainable communities, empowering growth, and redefining development across India.</p>
@@ -155,7 +107,7 @@
         <div class="stat-item"><div class="stat-number">5</div><div class="stat-label">Business Sectors</div></div>
       </section>
 
-      <!-- Projects -->
+      <!-- Projects Grid -->
       <section class="projects-grid">
 
         <!-- AGF Farms -->
@@ -179,7 +131,7 @@
           </div>
         </div>
 
-        <!-- Mathura Sanskar City -->
+        <!-- NK Group & Gowlok Dham -->
         <div class="project-card">
           <div class="project-image">
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="Mathura Sanskar City and Gowlok Dham">
@@ -247,44 +199,53 @@
   </main>
 
   <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>USB Group</h3>
-                    <p>Shaping Sustainable Innovation. Trust & Impact.</p>
-                    <p>📧 usbgroup.2000@gmail.com</p>
-                    <p>📞 Call: +91 93198 59929</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <p><a href="#about">About Us</a></p>
-                    <p><a href="#founder">Our Founder</a></p>
-                    <p><a href="#timeline">Timeline</a></p>
-                    <p><a href="#projects">Key Projects</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>Our Services</h3>
-                    <p><a href="#services">Bio-CBG</a></p>
-                    <p><a href="#services">IT & Software</a></p>
-                    <p><a href="#services">Strategic Consulting</a></p>
-                    <p><a href="#services">Renewable Energy</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>Get In Touch</h3>
-                    <p>Ready to start your next project? Contact us for a free consultation!</p>
-                    <p>Available Mon-Fri 9AM–6PM, Sat 9AM–2PM</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 USB Group Organization. All rights reserved.</p>
-            </div>
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>USB Group</h3>
+          <p>Shaping Sustainable Innovation. Trust & Impact.</p>
+          <p>📧 usbgroup.2000@gmail.com</p>
+          <p>📞 Call: +91 93198 59929</p>
         </div>
-    </footer>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <p><a href="./about.html">About Us</a></p>
+          <p><a href="./founder.html">Our Founder</a></p>
+          <p><a href="./timeline.html">Timeline</a></p>
+          <p><a href="./projects.html">Key Projects</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Our Services</h3>
+          <p><a href="./services.html">Bio-CBG</a></p>
+          <p><a href="./services.html">IT & Software</a></p>
+          <p><a href="./services.html">Strategic Consulting</a></p>
+          <p><a href="./services.html">Renewable Energy</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Get In Touch</h3>
+          <p>Ready to start your next project? Contact us for a free consultation!</p>
+          <p>Available Mon-Fri 9AM–6PM, Sat 9AM–2PM</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 USB Group Organization. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu(){
+      const navLinks=document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+      document.querySelector('.mobile-menu').classList.toggle('active');
+    }
+    document.querySelectorAll('.nav-links a').forEach(link=>{
+      link.addEventListener('click',()=>{
+        document.getElementById('navLinks').classList.remove('active');
+        document.querySelector('.mobile-menu').classList.remove('active');
+      });
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
