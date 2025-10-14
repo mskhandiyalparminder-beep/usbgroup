@@ -1,83 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>USB Group - Key Projects</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     * {margin:0;padding:0;box-sizing:border-box;}
-    body {
-      font-family:'Arial',sans-serif;
-      background-color:#0D1B2A;
-      color:#ffffff;
-      line-height:1.6;
-    }
-
-    header {
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      background:rgba(0,0,0,0.95);
-      backdrop-filter:blur(10px);
-      z-index:1000;
-      padding:1rem 0;
-    }
-    nav {
-      max-width:1200px;
-      margin:0 auto;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:0 2rem;
-    }
-    .logo {width:120px;}
-    .logo img {width:100%;border-radius:10px;}
-    .nav-links {display:flex;list-style:none;gap:2rem;}
-    .nav-links a {
-      color:#fff;
-      text-decoration:none;
-      transition:color 0.3s ease;
-    }
-    .nav-links a:hover {color:#3b82f6;}
-    .cta-button {
-      background:linear-gradient(45deg,#3b82f6,#1d4ed8);
-      color:white;
-      padding:0.75rem 1.5rem;
-      border:none;
-      border-radius:25px;
-      text-decoration:none;
-      font-weight:600;
-      transition:transform 0.3s ease,box-shadow 0.3s ease;
-    }
-    .cta-button:hover {transform:translateY(-2px);box-shadow:0 10px 25px rgba(59,130,246,0.3);}
-    .mobile-menu {display:none;}
-    main {margin-top:90px;padding:4rem 0;}
-    .container {max-width:1200px;margin:0 auto;padding:0 2rem;}
-
+    body {font-family:'Arial',sans-serif;background:#0D1B2A;color:#fff;line-height:1.6;}
+    header{position:fixed;top:0;left:0;right:0;background:rgba(0,0,0,0.95);backdrop-filter:blur(10px);z-index:1000;padding:1rem 0;}
+    nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem;}
+    .logo{width:120px;display:flex;align-items:center;}
+    .logo img{width:100%;border-radius:10px;}
+    .nav-links{display:flex;list-style:none;gap:2rem;}
+    .nav-links a{color:#fff;text-decoration:none;transition:color 0.3s;}
+    .nav-links a:hover{color:#3b82f6;}
+    .cta-button{background:linear-gradient(45deg,#3b82f6,#1d4ed8);color:#fff;padding:0.75rem 1.5rem;border:none;border-radius:25px;text-decoration:none;font-weight:600;transition:transform 0.3s,box-shadow 0.3s;}
+    .cta-button:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(59,130,246,0.3);}
+    main{margin-top:90px;padding:4rem 0;}
+    .container{max-width:1200px;margin:0 auto;padding:0 2rem;}
     .hero{text-align:center;margin-bottom:4rem;}
     .hero h1{font-size:3rem;margin-bottom:1rem;}
-    .highlight{color:#4a9eff;}
+    .hero .highlight{color:#4a9eff;}
     .hero p{font-size:1.1rem;color:#ccc;max-width:600px;margin:0 auto;}
-
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
-      gap:2rem;
-      margin-bottom:4rem;
-    }
-    .project-card{
-      background:rgba(255,255,255,0.05);
-      border-radius:20px;
-      overflow:hidden;
-      backdrop-filter:blur(10px);
-      border:1px solid rgba(255,255,255,0.1);
-      transition:transform 0.3s,box-shadow 0.3s;
-    }
-    .project-card:hover{
-      transform:translateY(-10px);
-      box-shadow:0 20px 40px rgba(0,0,0,0.3);
-    }
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-bottom:4rem;text-align:center;}
+    .stat-item{background:rgba(255,255,255,0.05);padding:2rem 1rem;border-radius:15px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);transition:transform 0.3s,background 0.3s;}
+    .stat-item:hover{transform:translateY(-5px);background:rgba(255,255,255,0.08);}
+    .stat-number{font-size:2.5rem;font-weight:bold;color:#4a9eff;margin-bottom:0.5rem;}
+    .stat-label{font-size:0.9rem;color:#ccc;}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:2rem;margin-bottom:4rem;}
+    .project-card{background:rgba(255,255,255,0.05);border-radius:20px;overflow:hidden;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);transition:transform 0.3s,box-shadow 0.3s;}
+    .project-card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,0.3);}
     .project-image{height:250px;overflow:hidden;}
     .project-image img{width:100%;height:100%;object-fit:cover;}
     .project-content{padding:2rem;}
@@ -86,31 +39,21 @@
     .project-description{color:#ccc;font-size:0.9rem;line-height:1.6;margin-bottom:1.5rem;}
     .project-highlights h4{color:#4a9eff;margin-bottom:0.8rem;}
     .highlights-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.5rem;}
-    .highlight-item{font-size:0.8rem;color:#aaa;}
-    .highlight-item::before{content:"✓";color:#4a9eff;margin-right:0.4rem;}
-
-    .footer{
-      background:rgba(255,255,255,0.05);
-      padding:3rem 2rem 2rem;
-      margin-top:4rem;
-    }
-    .footer-content{
-      max-width:1200px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:2rem;
-    }
+    .highlight-item{font-size:0.8rem;color:#aaa;display:flex;align-items:center;}
+    .highlight-item::before{content:"✓";color:#4a9eff;margin-right:0.5rem;}
+    .footer{background:rgba(255,255,255,0.05);padding:3rem 0 2rem;margin-top:4rem;}
+    .footer-content{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-bottom:2rem;}
     .footer-section h3{color:#fff;margin-bottom:1rem;font-size:1.1rem;}
-    .footer-section p,
-    .footer-section a{color:#ccc;font-size:0.9rem;line-height:1.8;text-decoration:none;}
+    .footer-section p,.footer-section a{color:#ccc;font-size:0.9rem;text-decoration:none;line-height:1.8;transition:color 0.3s;}
     .footer-section a:hover{color:#4a9eff;}
-    .footer-bottom{text-align:center;margin-top:2rem;color:#888;font-size:0.8rem;}
-    @media(max-width:768px){.container{padding:0 1rem;}.projects-grid{grid-template-columns:1fr;}}
+    .footer-bottom{text-align:center;color:#888;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:2rem;}
+    @media(max-width:768px){.stats{grid-template-columns:repeat(2,1fr);}.projects-grid{grid-template-columns:1fr;}.footer-content{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:480px){.stats{grid-template-columns:1fr;}.footer-content{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
 
+  <!-- Header -->
   <header>
     <nav>
       <div class="logo"><img src="./logo1.png" alt="USB Group Logo"></div>
@@ -127,88 +70,35 @@
     </nav>
   </header>
 
-   /* Main */
-    main {
-      margin-top: 80px;
-      padding: 4rem 0;
-    }
+  <!-- Main -->
+  <main>
+    <div class="container">
+      <!-- Hero -->
+      <section class="hero">
+        <h1>Our <span class="highlight">Projects</span></h1>
+        <p>Shaping sustainable communities, empowering growth, and redefining development across India.</p>
+      </section>
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+      <!-- Stats -->
+      <section class="stats">
+        <div class="stat-item"><div class="stat-number">25+</div><div class="stat-label">Years of Excellence</div></div>
+        <div class="stat-item"><div class="stat-number">1000+</div><div class="stat-label">Satisfied Clients</div></div>
+        <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label">Major Projects</div></div>
+        <div class="stat-item"><div class="stat-number">5</div><div class="stat-label">Business Sectors</div></div>
+      </section>
 
-    /* Hero */
-    .hero {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero .highlight {
-      color: #4a9eff;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: #cccccc;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Stats */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      margin-bottom: 4rem;
-      text-align: center;
-    }
-
-    .stat-item {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem 1rem;
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s, background 0.3s;
-    }
-
-    .stat-item:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #4a9eff;
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-label {
-      font-size: 0.9rem;
-      color: #cccccc;
-    }
-
+      <!-- Projects -->
       <section class="projects-grid">
 
         <!-- AGF Farms -->
         <div class="project-card">
           <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1599423300746-b62533397364?auto=format&fit=crop&w=1000&q=80" alt="AJF Farms Jewar">
+            <img src="https://images.unsplash.com/photo-1599423300746-b62533397364?auto=format&fit=crop&w=1000&q=80" alt="AGF Farms Jewar">
           </div>
           <div class="project-content">
             <h3 class="project-title">AGF Farms, Jewar</h3>
             <div class="project-location">📍 Jewar, Uttar Pradesh</div>
-            <p class="project-description">
-              A modern agricultural and eco-living initiative built on sustainability, organic practices, and innovative design. AGF Farms offers serene farmhouse plots and integrates green energy for a self-sufficient lifestyle.
-            </p>
+            <p class="project-description">A modern agricultural and eco-living initiative built on sustainability, organic practices, and innovative design. AGF Farms offers serene farmhouse plots and integrates green energy for a self-sufficient lifestyle.</p>
             <div class="project-highlights">
               <h4>Key Highlights</h4>
               <div class="highlights-grid">
@@ -217,20 +107,19 @@
                 <div class="highlight-item">Organic Farming</div>
                 <div class="highlight-item">Smart Water Management</div>
               </div>
+            </div>
           </div>
         </div>
 
         <!-- Mathura Sanskar City -->
         <div class="project-card">
           <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="Mathura Sanskar City and Goulok Dham">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="Mathura Sanskar City and Gowlok Dham">
           </div>
           <div class="project-content">
             <h3 class="project-title">NK Group & Gowlok Dham</h3>
             <div class="project-location">📍 Mathura, Uttar Pradesh</div>
-            <p class="project-description">
-              A spiritually inspired township combining modern amenities with the traditional essence of Mathura. Includes residential plots, wellness centers, and peaceful community living.
-            </p>
+            <p class="project-description">A spiritually inspired township combining modern amenities with the traditional essence of Mathura. Includes residential plots, wellness centers, and peaceful community living.</p>
             <div class="project-highlights">
               <h4>Key Highlights</h4>
               <div class="highlights-grid">
@@ -239,10 +128,11 @@
                 <div class="highlight-item">Modern Township</div>
                 <div class="highlight-item">Green Zones</div>
               </div>
+            </div>
           </div>
         </div>
 
-        <!-- USB Consultancy Projects Delhi NCR -->
+        <!-- USB Consultancy -->
         <div class="project-card">
           <div class="project-image">
             <img src="https://images.unsplash.com/photo-1560184897-efb7dfe5e2b8?auto=format&fit=crop&w=1000&q=80" alt="USB Consultancy Projects Delhi NCR">
@@ -250,9 +140,7 @@
           <div class="project-content">
             <h3 class="project-title">USB Consultancy Projects, Delhi NCR</h3>
             <div class="project-location">📍 Delhi NCR, India</div>
-            <p class="project-description">
-              USB Consultancy leads multi-sector projects including real estate, finance, IT, and infrastructure. Focused on strategic planning, project development, and investment management, delivering sustainable value and innovation across Delhi NCR.
-            </p>
+            <p class="project-description">USB Consultancy leads multi-sector projects including real estate, finance, IT, and infrastructure. Focused on strategic planning, project development, and investment management, delivering sustainable value and innovation across Delhi NCR.</p>
             <div class="project-highlights">
               <h4>Key Highlights</h4>
               <div class="highlights-grid">
@@ -273,9 +161,7 @@
           <div class="project-content">
             <h3 class="project-title">Satya Sai Homes, Delhi NCR</h3>
             <div class="project-location">📍 Delhi NCR</div>
-            <p class="project-description">
-              A premium residential project offering modern housing with superior build quality, green architecture, and seamless urban connectivity across the NCR region.
-            </p>
+            <p class="project-description">A premium residential project offering modern housing with superior build quality, green architecture, and seamless urban connectivity across the NCR region.</p>
             <div class="project-highlights">
               <h4>Key Highlights</h4>
               <div class="highlights-grid">
@@ -284,6 +170,7 @@
                 <div class="highlight-item">Community Amenities</div>
                 <div class="highlight-item">Sustainable Design</div>
               </div>
+            </div>
           </div>
         </div>
 
@@ -293,36 +180,37 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>About USB Group</h3>
-        <p>USB Group is a diversified enterprise focused on real estate, consultancy, technology, and sustainable innovation. For over two decades, we’ve delivered excellence with trust and integrity.</p>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About USB Group</h3>
+          <p>USB Group is a diversified enterprise focused on real estate, consultancy, technology, and sustainable innovation. For over two decades, we’ve delivered excellence with trust and integrity.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <p><a href="./index.html">Home</a></p>
+          <p><a href="./about.html">About</a></p>
+          <p><a href="./projects.html">Projects</a></p>
+          <p><a href="./services.html">Services</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📍 Dwarka, Delhi, India</p>
+          <p>📞 +91 9319859929</p>
+          <p>✉️ usbgroup.2000@gmail.com</p>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <p><a href="#">LinkedIn</a></p>
+          <p><a href="#">Facebook</a></p>
+          <p><a href="#">Instagram</a></p>
+        </div>
       </div>
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <a href="./index.html">Home</a><br>
-        <a href="./about.html">About</a><br>
-        <a href="./projects.html">Projects</a><br>
-        <a href="./services.html">Services</a>
+      <div class="footer-bottom">
+        © 2025 USB Group. All rights reserved.
       </div>
-      <div class="footer-section">
-        <h3>Contact</h3>
-        <p>📍 Dwarka, Delhi, India</p>
-        <p>📞 +91 9319859929</p>
-        <p>✉️ usbgroup.2000@gmail.com</p>
-      </div>
-      <div class="footer-section">
-        <h3>Follow Us</h3>
-        <a href="#">LinkedIn</a><br>
-        <a href="#">Facebook</a><br>
-        <a href="#">Instagram</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      © 2025 USB Group. All rights reserved.
     </div>
   </footer>
+
 </body>
 </html>
-
-
