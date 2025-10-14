@@ -1,127 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>USB Group - Key Projects</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    * {margin:0;padding:0;box-sizing:border-box;}
-    body {font-family:'Arial',sans-serif;background:#0D1B2A;color:#fff;line-height:1.6;}
-    header{position:fixed;top:0;left:0;right:0;background:rgba(0,0,0,0.95);backdrop-filter:blur(10px);z-index:1000;padding:1rem 0;}
-    nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem;}
-    .logo{width:120px;display:flex;align-items:center;}
-    .logo img{width:100%;border-radius:10px;}
-    .nav-links{display:flex;list-style:none;gap:2rem;}
-    .nav-links a{color:#fff;text-decoration:none;transition:color 0.3s;}
-    .nav-links a:hover{color:#3b82f6;}
-    .cta-button{background:linear-gradient(45deg,#3b82f6,#1d4ed8);color:#fff;padding:0.75rem 1.5rem;border:none;border-radius:25px;text-decoration:none;font-weight:600;transition:transform 0.3s,box-shadow 0.3s;}
-    .cta-button:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(59,130,246,0.3);}
-    main{margin-top:90px;padding:4rem 0;}
-    .container{max-width:1200px;margin:0 auto;padding:0 2rem;}
-    .hero{text-align:center;margin-bottom:4rem;}
-    .hero h1{font-size:3rem;margin-bottom:1rem;}
-    .hero .highlight{color:#4a9eff;}
-    .hero p{font-size:1.1rem;color:#ccc;max-width:600px;margin:0 auto;}
-    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-bottom:4rem;text-align:center;}
-    .stat-item{background:rgba(255,255,255,0.05);padding:2rem 1rem;border-radius:15px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);transition:transform 0.3s,background 0.3s;}
-    .stat-item:hover{transform:translateY(-5px);background:rgba(255,255,255,0.08);}
-    .stat-number{font-size:2.5rem;font-weight:bold;color:#4a9eff;margin-bottom:0.5rem;}
-    .stat-label{font-size:0.9rem;color:#ccc;}
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:2rem;margin-bottom:4rem;}
-    .project-card{background:rgba(255,255,255,0.05);border-radius:20px;overflow:hidden;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);transition:transform 0.3s,box-shadow 0.3s;}
-    .project-card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,0.3);}
-    .project-image{height:250px;overflow:hidden;}
-    .project-image img{width:100%;height:100%;object-fit:cover;}
-    .project-content{padding:2rem;}
-    .project-title{font-size:1.3rem;margin-bottom:0.5rem;}
-    .project-location{color:#888;font-size:0.9rem;margin-bottom:1rem;}
-    .project-description{color:#ccc;font-size:0.9rem;line-height:1.6;margin-bottom:1.5rem;}
-    .project-highlights h4{color:#4a9eff;margin-bottom:0.8rem;}
-    .highlights-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.5rem;}
-    .highlight-item{font-size:0.8rem;color:#aaa;display:flex;align-items:center;}
-    .highlight-item::before{content:"✓";color:#4a9eff;margin-right:0.5rem;}
-    .footer{background:rgba(255,255,255,0.05);padding:3rem 0 2rem;margin-top:4rem;}
-    .footer-content{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-bottom:2rem;}
-    .footer-section h3{color:#fff;margin-bottom:1rem;font-size:1.1rem;}
-    .footer-section p,.footer-section a{color:#ccc;font-size:0.9rem;text-decoration:none;line-height:1.8;transition:color 0.3s;}
-    .footer-section a:hover{color:#4a9eff;}
-    .footer-bottom{text-align:center;color:#888;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:2rem;}
-    @media(max-width:768px){.stats{grid-template-columns:repeat(2,1fr);}.projects-grid{grid-template-columns:1fr;}.footer-content{grid-template-columns:repeat(2,1fr);}}
-    @media(max-width:480px){.stats{grid-template-columns:1fr;}.footer-content{grid-template-columns:1fr;}}
-  </style>
-</head>
-<body>
-
-  <!-- Header -->
-  <header>
-    <nav>
-      <div class="logo"><img src="./logo1.png" alt="USB Group Logo"></div>
-      <ul class="nav-links">
-        <li><a href="./index.html">Home</a></li>
-        <li><a href="./about.html">About</a></li>
-        <li><a href="./founder.html">Founder</a></li>
-        <li><a href="./projects.html">Projects</a></li>
-        <li><a href="./services.html">Services</a></li>
-        <li><a href="./impact.html">Impact</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-      </ul>
-      <a href="#contact" class="cta-button">Get Started</a>
-    </nav>
-  </header>
-  /* Footer */
-        footer {
-            background: #000000;
-            padding: 60px 0 20px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USB Group - Professional Services</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 2rem;
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0D1B2A;
+            color: #ffffff;
+            line-height: 1.6;
         }
 
-        .footer-section h3 {
-            color: #4da6ff;
-            margin-bottom: 1rem;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .footer-section p,
-        .footer-section a {
-            color: #cccccc;
-            text-decoration: none;
-            margin-bottom: 0.5rem;
-            display: block;
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
         }
 
-        .footer-section a:hover {
-            color: #4da6ff;
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
         }
 
-        .footer-bottom {
-            border-top: 1px solid #333;
-            padding-top: 1rem;
-            text-align: center;
-            color: #888;
-        }
-
-        .footer-links {
+        .logo {
+            width: 120px;
             display: flex;
             justify-content: center;
+            align-items: center;
+        }
+
+        .logo img{
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
             gap: 2rem;
-            margin-top: 1rem;
         }
 
-        .footer-links a {
-            color: #888;
+        .nav-links a {
+            color: #ffffff;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: #4da6ff;
+        .nav-links a:hover {
+            color: #3b82f6;
         }
 
+        .cta-button {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                /* just below header */
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.95);
+                padding: -4rem;
+                text-align: center;
+            }
+
+            .nav-links.mobile-active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem 0;
+                display: block;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .cta-button {
+                display: none;
+            }
+        }
 
   <!-- Main -->
   <main>
@@ -268,6 +283,7 @@
     </footer>
 </body>
 </html>
+
 
 
 
