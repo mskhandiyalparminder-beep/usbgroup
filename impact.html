@@ -1,974 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USB Group - Our Social Impact</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #0D1B2A;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-/* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            width: 120px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .logo img{
-            width: 100%;
-            border-radius: 10px;
-        }
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #ece5e5;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #3b82f6;
-        }
-
-        .cta-button {
-            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-            color: rgb(248, 247, 247);
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: #ffffff;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            padding: 5rem 0;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
-
-        .hero-title .highlight {
-            color: #4a9eff;
-        }
-
-        .hero-subtitle {
-            color: #ccc;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        /* Impact Stats */
-        .impact-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-
-        .stat-card {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(74, 158, 255, 0.2);
-        }
-
-        .stat-icon {
-            font-size: 3rem;
-            color: #4a9eff;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #4a9eff;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            color: #fff;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .stat-description {
-            color: #aaa;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        /* Mission Section */
-        .mission-section {
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .mission-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #fff;
-        }
-
-        .mission-content {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 15px;
-            padding: 3rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .mission-text {
-            color: #ccc;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        /* Initiatives Section */
-        .initiatives-section {
-            padding: 4rem 0;
-        }
-
-        .initiatives-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #fff;
-        }
-
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .initiative-card {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 15px;
-            padding: 2rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .initiative-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .initiative-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .initiative-icon {
-            font-size: 2rem;
-            margin-right: 1rem;
-            padding: 0.8rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .initiative-category {
-            background-color: #4a9eff;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-left: auto;
-        }
-
-        .education .initiative-category { background-color: #4a9eff; }
-        .infrastructure .initiative-category { background-color: #9c4aff; }
-        .healthcare .initiative-category { background-color: #ff4a6b; }
-        .environment .initiative-category { background-color: #00d084; }
-        .empowerment .initiative-category { background-color: #ff6b4a; }
-        .employment .initiative-category { background-color: #ffd700; }
-
-        .initiative-title {
-            color: #fff;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .initiative-description {
-            color: #ccc;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .initiative-stats {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1rem;
-            border-top: 1px solid #333;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            color: #4a9eff;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .stat-text {
-            color: #aaa;
-            font-size: 0.8rem;
-            margin-top: 0.2rem;
-        }
-
-        /* Community Voices */
-        .voices-section {
-            padding: 4rem 0;
-            background-color: #235468;
-            margin: 4rem 0;
-            border-radius: 20px;
-        }
-
-        .voices-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #fff;
-        }
-
-        .voices-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-        }
-
-        .voice-card {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 15px;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .quote-icon {
-            font-size: 3rem;
-            color: #4a9eff;
-            opacity: 0.3;
-            position: absolute;
-            top: 1rem;
-            left: 1.5rem;
-        }
-
-        .voice-quote {
-            font-style: italic;
-            color: #ccc;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin: 2rem 0 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .voice-author {
-            color: #fff;
-            font-weight: bold;
-            margin-bottom: 0.3rem;
-        }
-
-        .voice-location {
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-
-        /* Commitment Section */
-        .commitment-section {
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .commitment-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #fff;
-        }
-
-        .commitment-content {
-            background: linear-gradient(135deg, #1a4d3a, #2a5d4a);
-            border-radius: 20px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .commitment-text {
-            color: #ccc;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .commitment-tags {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .commitment-tag {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* Footer */
-        footer {
-            background-color: #111;
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            color: #4a9eff;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-section p, .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .footer-section a:hover {
-            color: #4a9eff;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #333;
-            padding-top: 1rem;
-            text-align: center;
-            color: #666;
-            font-size: 0.8rem;
-        }
-
-        .contact-info {
-            margin-bottom: 1rem;
-        }
-
-        .contact-info p {
-            margin-bottom: 0.3rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 70px; /* just below header */
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.95);
-        padding: 1rem; /* Fixed: was -4rem */
-        text-align: center;
-        border-radius: 0 0 12px 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-
-    /* Change mobile-active to active */
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links a {
-        padding: 1rem 0;
-        display: block;
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* Add the hover effect for mobile too */
-    .nav-links a::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: white;
-        transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover::after {
-        width: 100%;
-    }
-
-    .mobile-menu {
-        display: flex;
-    }
-}
-
- nav .cta-button {
-        display: none;
-    }
-            .hero-title {
-                font-size: 2.2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-                padding: 0 1rem;
-            }
-
-            .impact-stats {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 1.5rem;
-            }
-
-            .stat-card {
-                padding: 1.5rem;
-            }
-
-            .initiatives-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .voices-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .mission-content, .commitment-content {
-                padding: 2rem;
-            }
-
-            .commitment-tags {
-                justify-content: center;
-            }
-
-            .commitment-tag {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .container {
-                padding: 0 15px;
-            }
-        
-        .mobile-menu.active span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.mobile-menu.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.mobile-menu.active span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-}
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 1.8rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-
-            .initiative-card {
-                padding: 1.5rem;
-            }
-
-            .voices-grid {
-                gap: 1.5rem;
-            }
-
-            .voice-card {
-                padding: 1.5rem;
-            }
-
-            .mission-content, .commitment-content {
-                padding: 1.5rem;
-            }
-        }
-
-        /* Icons using CSS shapes and emojis */
-        .icon-users::before { content: "👥"; }
-        .icon-graduation::before { content: "🎓"; }
-        .icon-home-heart::before { content: "🏠"; }
-        .icon-leaf-heart::before { content: "🌿"; }
-        .icon-education::before { content: "📚"; }
-        .icon-infrastructure::before { content: "🏗️"; }
-        .icon-healthcare::before { content: "🏥"; }
-        .icon-environment::before { content: "🌱"; }
-        .icon-empowerment::before { content: "💪"; }
-        .icon-employment::before { content: "💼"; }
-        .icon-quote::before { content: ""; }
-
-        /* Animation for cards */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-on-scroll {
-            animation: fadeInUp 0.6s ease-out;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USB Group - Social Impact</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {font-family:'Arial',sans-serif;background:#0D1B2A;color:#fff;line-height:1.6;}
+    header{position:fixed;top:0;left:0;right:0;background:rgba(0,0,0,0.95);backdrop-filter:blur(10px);z-index:1000;padding:1rem 0;}
+    nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem;}
+    .logo{width:120px;display:flex;align-items:center;}
+    .logo img{width:100%;border-radius:10px;}
+    .nav-links{display:flex;list-style:none;gap:2rem;}
+    .nav-links a{color:#fff;text-decoration:none;transition:color 0.3s;}
+    .nav-links a:hover{color:#3b82f6;}
+    .cta-button{background:linear-gradient(45deg,#3b82f6,#1d4ed8);color:#fff;padding:0.75rem 1.5rem;border:none;border-radius:25px;text-decoration:none;font-weight:600;transition:transform 0.3s,box-shadow 0.3s;}
+    .cta-button:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(59,130,246,0.3);}
+    main{margin-top:90px;padding:4rem 0;}
+    .container{max-width:1200px;margin:0 auto;padding:0 2rem;}
+    .hero{text-align:center;margin-bottom:4rem;}
+    .hero h1{font-size:3rem;margin-bottom:1rem;}
+    .hero .highlight{color:#4a9eff;}
+    .hero p{font-size:1.1rem;color:#ccc;max-width:700px;margin:0 auto;}
+    .initiatives{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:4rem;}
+    .initiative{background:rgba(255,255,255,0.05);padding:2rem;border-radius:15px;transition:transform 0.3s,box-shadow 0.3s;}
+    .initiative:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(0,0,0,0.3);}
+    .initiative h3{color:#4a9eff;margin-bottom:1rem;}
+    .initiative p{color:#ccc;font-size:0.95rem;line-height:1.7;}
+    .footer{background:rgba(255,255,255,0.05);padding:3rem 0 2rem;margin-top:4rem;}
+    .footer-content{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-bottom:2rem;}
+    .footer-section h3{color:#fff;margin-bottom:1rem;font-size:1.1rem;}
+    .footer-section p,.footer-section a{color:#ccc;font-size:0.9rem;text-decoration:none;line-height:1.8;transition:color 0.3s;}
+    .footer-section a:hover{color:#4a9eff;}
+    .footer-bottom{text-align:center;color:#888;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:2rem;}
+    @media(max-width:768px){.footer-content{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:480px){.footer-content{grid-template-columns:1fr;}}
+  </style>
 </head>
 <body>
-    <!-- Header -->
-   <header>
-        <nav>
-            <div class="logo">
-                <img src="./logo1.png" alt="">
-            </div>
-            <ul class="nav-links">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./founder.html">Founder</a></li>
-                <li><a href="./timeline.html">Timeline</a></li>
-                <li><a href="./projects.html">Projects</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li><a href="./impact.html">Impact</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
-            <a href="#contact" class="cta-button">Get Started</a>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <h1 class="hero-title">Our Social <span class="highlight">Impact</span></h1>
-            <p class="hero-subtitle">Creating lasting positive change in communities through our charitable trust activities and social responsibility initiatives</p>
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo"><img src="./logo1.png" alt="USB Group Logo"></div>
+      <ul class="nav-links">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./founder.html">Founder</a></li>
+        <li><a href="./projects.html">Projects</a></li>
+        <li><a href="./services.html">Services</a></li>
+        <li><a href="./impact.html">Impact</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+      <a href="#contact" class="cta-button">Get Started</a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <div class="container">
+      <!-- Hero -->
+      <section class="hero">
+        <h1>Our <span class="highlight">Social Initiatives</span></h1>
+        <p>USB Group has been serving society through education, healthcare, rural upliftment, and sustainable development for over two decades.</p>
+      </section>
+
+      <!-- Initiatives -->
+      <section class="initiatives">
+        <div class="initiative">
+          <h3>Education</h3>
+          <p>Through <strong>Samarth Charitable Trust</strong> (since 2003), we support education in slum areas and empower children with learning opportunities.  
+          <br>With <strong>Manav Sankalp Welfare Society</strong>, we are contributing to the development of Radheyshyam Sharma Studies & Research University in Aligarh, UP.</p>
         </div>
-    </section>
-
-    <!-- Impact Statistics -->
-    <section class="container">
-        <div class="impact-stats">
-            <div class="stat-card">
-                <span class="stat-icon icon-users"></span>
-                <div class="stat-number">1,000+</div>
-                <div class="stat-label">Lives Impacted</div>
-                <div class="stat-description">Direct and indirect beneficiaries across our social initiatives</div>
-            </div>
-            <div class="stat-card">
-                <span class="stat-icon icon-graduation"></span>
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Students Supported</div>
-                <div class="stat-description">Educational scholarships and skill development programs</div>
-            </div>
-            <div class="stat-card">
-                <span class="stat-icon icon-home-heart"></span>
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Community Projects</div>
-                <div class="stat-description">Infrastructure and welfare projects in rural areas</div>
-            </div>
-            <div class="stat-card">
-                <span class="stat-icon icon-leaf-heart"></span>
-                <div class="stat-number">25%</div>
-                <div class="stat-label">Carbon Reduction</div>
-                <div class="stat-description">Environmental impact through renewable energy initiatives</div>
-            </div>
+        <div class="initiative">
+          <h3>Health</h3>
+          <p><strong>Samarth Charitable Trust</strong> extends cancer support aid and medical help to underprivileged families.  
+          <br><strong>Shree Keshav Madhav Trust</strong> (2025) is focused on establishing medical shelters, education facilities, and Ashram stays in Mathura, Vrindavan & Delhi.</p>
         </div>
-    </section>
-
-    <!-- Mission Section -->
-    <section class="mission-section">
-        <div class="container">
-            <h2 class="mission-title">Our Social Mission</h2>
-            <div class="mission-content">
-                <p class="mission-text">At USB Group, we believe that business success should translate into societal progress. Through our dedicated charitable trust and social responsibility initiatives, we are committed to creating sustainable positive impact in education, healthcare, infrastructure, and environmental conservation.</p>
-            </div>
+        <div class="initiative">
+          <h3>Community Development</h3>
+          <p><strong>Manav Sankalp Welfare Society</strong> (FCRA No. 231661622) provides sports, legal & social services for the needy.  
+          <br><strong>Haribrahma Masandgarhia Society</strong> (2017, Mathura) organizes food service initiatives to support local communities.</p>
         </div>
-    </section>
-
-    <!-- Social Initiatives -->
-    <section class="initiatives-section">
-        <div class="container">
-            <h2 class="initiatives-title">Our Social Initiatives</h2>
-            <div class="initiatives-grid">
-                <!-- Educational Excellence Program -->
-                <div class="initiative-card education">
-                    <div class="initiative-header">
-                        <div class="initiative-icon icon-education"></div>
-                        <div class="initiative-category">Education</div>
-                    </div>
-                    <h3 class="initiative-title">Educational Excellence Program</h3>
-                    <p class="initiative-description">Providing quality education infrastructure and skill development opportunities for underprivileged students across rural communities.</p>
-                    <div class="initiative-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">200+</div>
-                            <div class="stat-text">students benefited</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">15</div>
-                            <div class="stat-text">schools supported</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">95%</div>
-                            <div class="stat-text">success rate</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Community Infrastructure -->
-                <div class="initiative-card infrastructure">
-                    <div class="initiative-header">
-                        <div class="initiative-icon icon-infrastructure"></div>
-                        <div class="initiative-category">Infrastructure</div>
-                    </div>
-                    <h3 class="initiative-title">Community Infrastructure Development</h3>
-                    <p class="initiative-description">Building essential infrastructure including roads, water systems, and community centers to improve quality of life in underserved areas.</p>
-                    <div class="initiative-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">25</div>
-                            <div class="stat-text">villages transformed</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">12</div>
-                            <div class="stat-text">projects completed</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">5000+</div>
-                            <div class="stat-text">beneficiaries</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Healthcare Access -->
-                <div class="initiative-card healthcare">
-                    <div class="initiative-header">
-                        <div class="initiative-icon icon-healthcare"></div>
-                        <div class="initiative-category">Healthcare</div>
-                    </div>
-                    <h3 class="initiative-title">Healthcare Access Initiative</h3>
-                    <p class="initiative-description">Mobile healthcare units and medical camps providing health awareness programs reaching remote communities.</p>
-                    <div class="initiative-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">3000+</div>
-                            <div class="stat-text">patients treated</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">50</div>
-                            <div class="stat-text">medical camps</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">8000+</div>
-                            <div class="stat-text">people reached</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Environmental Sustainability -->
-                <div class="initiative-card environment">
-                    <div class="initiative-header">
-                        <div class="initiative-icon icon-environment"></div>
-                        <div class="initiative-category">Environment</div>
-                    </div>
-                    <h3 class="initiative-title">Environmental Sustainability</h3>
-                    <p class="initiative-description">Tree plantation drives, waste management systems, and renewable energy adoption in rural communities.</p>
-                    <div class="initiative-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">10,000+</div>
-                            <div class="stat-text">trees planted</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">25</div>
-                            <div class="stat-text">villages covered</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">500</div>
-                            <div class="stat-text">tons CO2 saved</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Women Empowerment -->
-                <div class="initiative-card empowerment">
-                    <div class="initiative-header">
-                        <div class="initiative-icon icon-empowerment"></div>
-                        <div class="initiative-category">Empowerment</div>
-                    </div>
-                    <h3 class="initiative-title">Women Empowerment Program</h3>
-                    <p class="initiative-description">Skill development, entrepreneurship training, and financial literacy programs for women in rural areas.</p>
-                    <div class="initiative-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">1000+</div>
-                            <div class="stat-text">women trained</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">150</div>
-                            <div class="stat-text">businesses started</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">85%</div>
-                            <div class="stat-text">success rate</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Rural Employment -->
-                <div class="initiative-card employment">
-                    <div class="initiative-header">
-                        <div class="initiative-icon icon-employment"></div>
-                        <div class="initiative-category">Employment</div>
-                    </div>
-                    <h3 class="initiative-title">Rural Employment Generation</h3>
-                    <p class="initiative-description">Creating sustainable employment opportunities through Bio-CBG projects and agricultural value chain enhancement.</p>
-                    <div class="initiative-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">2000+</div>
-                            <div class="stat-text">jobs created</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">40</div>
-                            <div class="stat-text">CBG plants</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">95%</div>
-                            <div class="stat-text">retention rate</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="initiative">
+          <h3>Sustainability & Cow Welfare</h3>
+          <p><strong>Samarth Charitable Trust</strong> also works extensively in <em>Cow Saving & Welfare</em>, promoting sustainable practices and compassion towards animals.</p>
         </div>
-    </section>
+      </section>
+    </div>
+  </main>
 
-    <!-- Community Voices -->
-    <section class="voices-section">
-        <div class="container">
-            <h2 class="voices-title">Community Voices</h2>
-            <div class="voices-grid">
-                <div class="voice-card">
-                    <div class="quote-icon icon-quote"></div>
-                    <p class="voice-quote">"The educational scholarship program has transformed my daughter's future. She's now pursuing engineering, something we never thought possible."</p>
-                    <div class="voice-author">Ramesh Kumar</div>
-                    <div class="voice-location">Farmer, Haryana</div>
-                </div>
-                <div class="voice-card">
-                    <div class="quote-icon icon-quote"></div>
-                    <p class="voice-quote">"The mobile healthcare unit visits our village monthly. It's been a lifeline for our elderly and children who couldn't access medical care before."</p>
-                    <div class="voice-author">Sunita Devi</div>
-                    <div class="voice-location">Village Leader, Rajasthan</div>
-                </div>
-            </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About USB Group</h3>
+          <p>USB Group is a diversified enterprise focused on real estate, consultancy, technology, and sustainable innovation. For over two decades, we’ve delivered excellence with trust and integrity.</p>
         </div>
-    </section>
-
-    <!-- Our Ongoing Commitment -->
-    <section class="commitment-section">
-        <div class="container">
-            <h2 class="commitment-title">Our Ongoing Commitment</h2>
-            <div class="commitment-content">
-                <p class="commitment-text">As we continue to grow, so does our commitment to social responsibility. We pledge to invest 5% of our annual profits into community development programs, with a focus on education, healthcare, and environmental sustainability.</p>
-                <div class="commitment-tags">
-                    <span class="commitment-tag">Education Access</span>
-                    <span class="commitment-tag">Healthcare for All</span>
-                    <span class="commitment-tag">Environmental Protection</span>
-                    <span class="commitment-tag">Rural Development</span>
-                    <span class="commitment-tag">Women Empowerment</span>
-                </div>
-            </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <p><a href="./index.html">Home</a></p>
+          <p><a href="./about.html">About</a></p>
+          <p><a href="./projects.html">Projects</a></p>
+          <p><a href="./services.html">Services</a></p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>USB Group</h3>
-                    <p>Shaping Tomorrow with Innovation, Trust & Impact. 25+ years of excellence across the globe in Multiple Consultancy, Bio CBG generation business.</p>
-                    <div class="contact-info">
-                        <p>📞 Tel: +91 93198 59929</p>
-                        <p>✉️ info@usbgroup.com</p>
-                        <p>🌐 Delhi NCR, India</p>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">About Us</a></li>
-                        <li><a href="#founder">Our Founder</a></li>
-                        <li><a href="#timeline">Timeline</a></li>
-                        <li><a href="#projects">Key Projects</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Our Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="#services">Bio Estate</a></li>
-                        <li><a href="#services">IT & Software</a></li>
-                        <li><a href="#services">Financial Consulting</a></li>
-                        <li><a href="#services">Renewable Energy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Get In Touch</h3>
-                    <p>Ready to start your next project? Contact us for a free consultation!</p>
-                    <p>Available Mon-Fri 9:00 AM to 6:00 PM IST</p>
-                    <p>Response within 24 hours guaranteed</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 USB Group Organization. All rights reserved. | Privacy Policy | Terms of Service | Cookie Policy</p>
-            </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📍 Dwarka, Delhi, India</p>
+          <p>📞 +91 9319859929</p>
+          <p>✉️ usbgroup.2000@gmail.com</p>
         </div>
-    </footer>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <p><a href="#">LinkedIn</a></p>
+          <p><a href="#">Facebook</a></p>
+          <p><a href="#">Instagram</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 USB Group. All rights reserved.
+      </div>
+    </div>
+  </footer>
 
-    <script>
-        function toggleMenu() {
-        const navLinks = document.getElementById('navLinks');
-        navLinks.classList.toggle('active');
-        
-        // Optional: Toggle mobile menu animation
-        const mobileMenu = document.querySelector('.mobile-menu');
-        mobileMenu.classList.toggle('active');
-    }
-
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            const navLinks = document.getElementById('navLinks');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            navLinks.classList.remove('active');
-            mobileMenu.classList.remove('active');
-        });
-    });
-
-    </script>
 </body>
-
 </html>
