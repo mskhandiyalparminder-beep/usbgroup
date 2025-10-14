@@ -133,58 +133,73 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
+  <!-- Main -->
+  <main>
     <div class="container">
-      <h1 class="hero-title">Our Social <span class="highlight">Impact</span></h1>
-      <p class="hero-subtitle">Creating lasting positive change in communities through our charitable trust activities and social responsibility initiatives</p>
+      <!-- Hero -->
+      <section class="hero">
+        <h1>Our <span class="highlight">Social Initiatives</span></h1>
+        <p>USB Group has been serving society through education, healthcare, rural upliftment, and sustainable development for over two decades.</p>
+      </section>
+
+      <!-- Initiatives -->
+      <section class="initiatives">
+        <div class="initiative">
+          <h3>Education</h3>
+          <p>Through <strong>Samarth Charitable Trust</strong> (since 2003), we support education in slum areas and empower children with learning opportunities.  
+          <br>With <strong>Manav Sankalp Welfare Society</strong>, we are contributing to the development of Radheyshyam Sharma Studies & Research University in Aligarh, UP.</p>
+        </div>
+        <div class="initiative">
+          <h3>Health</h3>
+          <p><strong>Samarth Charitable Trust</strong> extends cancer support aid and medical help to underprivileged families.  
+          <br><strong>Shree Keshav Madhav Trust</strong> (2025) is focused on establishing medical shelters, education facilities, and Ashram stays in Mathura, Vrindavan & Delhi.</p>
+        </div>
+        <div class="initiative">
+          <h3>Community Development</h3>
+          <p><strong>Manav Sankalp Welfare Society</strong> (FCRA No. 231661622) provides sports, legal & social services for the needy.  
+          <br><strong>Haribrahma Masandgarhia Society</strong> (2017, Mathura) organizes food service initiatives to support local communities.</p>
+        </div>
+        <div class="initiative">
+          <h3>Sustainability & Cow Welfare</h3>
+          <p><strong>Samarth Charitable Trust</strong> also works extensively in <em>Cow Saving & Welfare</em>, promoting sustainable practices and compassion towards animals.</p>
+        </div>
+      </section>
     </div>
-  </section>
-
-  <!-- Impact Statistics -->
-  <!-- (kept exactly as your original) -->
-
-  <!-- Mission Section -->
-  <!-- (kept exactly as your original) -->
-
-  <!-- Initiatives Section -->
-  <!-- (kept exactly as your original) -->
-
-  <!-- Community Voices -->
-  <!-- (kept exactly as your original) -->
-
-  <!-- Our Ongoing Commitment -->
-  <!-- (kept exactly as your original) -->
-
-  <!-- Charities Section -->
-  <section class="charities-section">
-    <div class="container">
-      <h2 class="charities-title">SOCIETIES, ASHRAM & TRUST Chairman & Members</h2>
-      <ul class="charities-list">
-        <li><strong>SAMARTH Charitable Trust (since 2003)</strong> – Cow Saving & Welfare, Education in slum areas, Cancer support aid, and many more social activities & selfless services.</li>
-        <li><strong>MANAV SANKALP WELFARE SOCIETY (Member since 2003)</strong> – Radheyshyam Sharma Studies & Research University developing in Aligarh UP; Sports, Legal & Social Services for the needy. <br>FCRA Number: 231661622</li>
-        <li><strong>HARIBRAHMA Masandgarhia Society (2017, Mathura)</strong> – Food Service initiatives.</li>
-        <li><strong>SHREE KESHAV MADHAV TRUST (2025)</strong> – Ashram Land for Medical, Education & Shelters with Ashram Room Stay (Mathura, Vrindavan & Delhi).</li>
-      </ul>
-    </div>
-  </section>
+  </main>
 
   <!-- Footer -->
-  <!-- (kept exactly as your original) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About USB Group</h3>
+          <p>USB Group is a diversified enterprise focused on real estate, consultancy, technology, and sustainable innovation. For over two decades, we’ve delivered excellence with trust and integrity.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <p><a href="./index.html">Home</a></p>
+          <p><a href="./about.html">About</a></p>
+          <p><a href="./projects.html">Projects</a></p>
+          <p><a href="./services.html">Services</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📍 Dwarka, Delhi, India</p>
+          <p>📞 +91 9319859929</p>
+          <p>✉️ usbgroup.2000@gmail.com</p>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <p><a href="#">LinkedIn</a></p>
+          <p><a href="#">Facebook</a></p>
+          <p><a href="#">Instagram</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 USB Group. All rights reserved.
+      </div>
+    </div>
+  </footer>
 
-  <script>
-    function toggleMenu(){
-      const navLinks=document.getElementById('navLinks');
-      navLinks.classList.toggle('active');
-      const mobileMenu=document.querySelector('.mobile-menu');
-      mobileMenu.classList.toggle('active');
-    }
-    document.querySelectorAll('.nav-links a').forEach(link=>{
-      link.addEventListener('click',()=>{
-        document.getElementById('navLinks').classList.remove('active');
-        document.querySelector('.mobile-menu').classList.remove('active');
-      });
-    });
-  </script>
 </body>
 </html>
