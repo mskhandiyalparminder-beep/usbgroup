@@ -6,8 +6,446 @@
     <title>USB Group - Our Journey</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* (Your existing CSS — unchanged) */
-        /* Keep everything you already have above */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0D1B2A 0%, #1a1a2e 50%, #0D1B2A 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header */
+         header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            width: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img{
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Timeline Container */
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #3b82f6 0%, #60a5fa 50%, #3b82f6 100%);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: #3b82f6;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -50px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -50px;
+        }
+
+        .timeline-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .timeline-content p {
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .timeline-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3b82f6;
+        }
+
+        .timeline-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 50%;
+            top: 7rem;
+            transform: translateX(-50%);
+            z-index: 10;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .timeline-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        /* Future Section */
+        .future-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 20px;
+            margin: 4rem 0;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .future-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .future-section p {
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .future-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .future-badge {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 2rem 1rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #b0b0b0;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #3b82f6;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #777;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .timeline-line {
+                left: 2rem;
+            }
+
+            .timeline-item {
+                justify-content: flex-start !important;
+                margin-left: 4rem;
+            }
+
+            .timeline-content {
+                width: calc(100% - 2rem);
+            }
+
+            .timeline-content::before {
+                left: -30px !important;
+            }
+
+            .timeline-icon {
+                left: -3rem;
+                transform: translateX(-50%);
+                top: 3rem;
+            }
+
+            .future-section h2 {
+                font-size: 2rem;
+            }
+            .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* just below header */
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        padding: -4rem;
+        text-align: center;
+    }
+
+    /* When active */
+    .nav-links.mobile-active {
+        display: flex;
+    }
+
+    /* Add-on for hover animation - add this to your existing CSS */
+
+.nav-links a {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:not(:hover)::after {
+    width: 0;
+    transition: width 0.3s ease;
+}
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 7rem 1rem 1rem;
+            }
+
+            .timeline-container {
+                padding: 2rem 1rem;
+            }
+
+            .timeline-content {
+                padding: 1.5rem;
+            }
+
+            .footer {
+                padding: 2rem 1rem 1rem;
+            }
+        }
+
+        /* Animation delays for staggered effect */
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(7) { animation-delay: 0.7s; }
     </style>
 </head>
 <body>
@@ -15,7 +453,7 @@
     <header>
         <nav>
            <div class="logo">
-                <img src="./logo1.png" alt="USB Group Logo">
+                <img src="./logo1.png" alt="">
             </div>
             <ul class="nav-links">
                 <li><a href="./index.html">Home</a></li>
@@ -27,7 +465,7 @@
                 <li><a href="./impact.html">Impact</a></li>
                 <li><a href="./contact.html">Contact</a></li>
             </ul>
-            <a href="./contact.html" class="cta-button">Get Started</a>
+            <a href="#contact.html" class="cta-button">Get Started</a>
             <div class="mobile-menu">
                 <span></span>
                 <span></span>
@@ -39,14 +477,14 @@
     <!-- Hero Section -->
     <section class="hero">
         <h1>Our Journey</h1>
-        <p>25 years of innovation, growth, and impact across multiple sectors</p>
+        <p>25 years of excellence, innovation, and growth across multiple sectors</p>
     </section>
 
     <!-- Timeline -->
     <div class="timeline-container">
         <div class="timeline-line"></div>
 
-        <!-- 2000 -->
+        <!-- Timeline Item 1: 2000 -->
         <div class="timeline-item">
             <div class="timeline-icon">
                 <svg fill="currentColor" viewBox="0 0 20 20">
@@ -59,11 +497,11 @@
                     <span>Delhi NCR</span>
                 </div>
                 <h3>Foundation & IT Development</h3>
-                <p>USB Group was founded by Uma Shankar Bhardwaj, focusing on IT development and Web 2.0 promotion. This marked the beginning of a technology-driven era built on trust, innovation, and digital progress.</p>
+                <p>USB Group was established by Uma Shankar Bhardwaj. The early focus was on IT development and Web 2.0 promotion — building web solutions and technology services that set the foundation for future diversification.</p>
             </div>
         </div>
 
-        <!-- 2005 -->
+        <!-- Timeline Item 2: 2005 -->
         <div class="timeline-item">
             <div class="timeline-icon">
                 <svg fill="currentColor" viewBox="0 0 20 20">
@@ -76,11 +514,11 @@
                     <span>Gurgaon & Bahadurgarh</span>
                 </div>
                 <h3>Real Estate Expansion</h3>
-                <p>USB Group entered the real estate sector through projects under HUDA (Haryana Urban Development Authority). The company sold residential plots and collaborated with DLF and other leading developers, marking its strong entry into construction and real estate.</p>
+                <p>USB Group expanded into real estate in the Delhi NCR region, undertaking plot sales and HUDA projects in Gurgaon and Bahadurgarh. The company built strong collaborations with leading developers and established a presence in residential and construction projects.</p>
             </div>
         </div>
 
-        <!-- 2007 -->
+        <!-- Timeline Item 3: 2007 -->
         <div class="timeline-item">
             <div class="timeline-icon">
                 <svg fill="currentColor" viewBox="0 0 20 20">
@@ -92,12 +530,12 @@
                     <span>2007</span>
                     <span>Delhi</span>
                 </div>
-                <h3>Electric Mobility & Retail Ventures</h3>
-                <p>Ventured into the electric vehicle industry by opening six electric scooter showrooms across Delhi. Simultaneously launched Taghills, a multi-brand garments and retail chain, reflecting the group’s diversification and consumer-centric innovation.</p>
+                <h3>Electric Mobility & Retail</h3>
+                <p>The Group entered electric mobility with multiple scooter retail outlets in Delhi and simultaneously launched Taghills — a multi-brand garments and retail initiative — broadening USB Group’s consumer-facing businesses.</p>
             </div>
         </div>
 
-        <!-- 2014 -->
+        <!-- Timeline Item 4: 2014 -->
         <div class="timeline-item">
             <div class="timeline-icon">
                 <svg fill="currentColor" viewBox="0 0 20 20">
@@ -109,12 +547,12 @@
                     <span>2014</span>
                     <span>Mathura</span>
                 </div>
-                <h3>Consultancy & Real Estate Services</h3>
-                <p>Established NK Group (Sanskar City) and USB Consultancy, expanding into plotting, construction, and advisory. This marked the start of USB Group’s integrated growth as a diversified business enterprise.</p>
+                <h3>NK Group & USB Consultancy</h3>
+                <p>Founded NK Group (Sanskar City) and USB Consultancy to expand plotting, construction, and advisory services. This phase formalized the Group’s consulting capabilities and project execution across real estate ventures.</p>
             </div>
         </div>
 
-        <!-- 2017 -->
+        <!-- Timeline Item 5: 2017 -->
         <div class="timeline-item">
             <div class="timeline-icon">
                 <svg fill="currentColor" viewBox="0 0 20 20">
@@ -126,12 +564,12 @@
                     <span>2017</span>
                     <span>Jewar & Palwal</span>
                 </div>
-                <h3>Farmhouses & Commercial Development</h3>
-                <p>Launched residential, farmhouse, and commercial projects near the Noida Expressway in Jewar and Palwal. These developments strengthened USB Group’s presence in the premium and emerging real estate markets of UP and Haryana.</p>
+                <h3>Farmhouses, Residential & Commercial Projects</h3>
+                <p>Developed farmhouses, residential complexes, and commercial projects in strategic corridors near the Noida Expressway (Jewar and Palwal), strengthening USB Group’s footprint in UP and Haryana.</p>
             </div>
         </div>
 
-        <!-- 2018 -->
+        <!-- Timeline Item 6: 2018 -->
         <div class="timeline-item">
             <div class="timeline-icon">
                 <svg fill="currentColor" viewBox="0 0 20 20">
@@ -144,11 +582,11 @@
                     <span>Delhi NCR</span>
                 </div>
                 <h3>Financial Market Research</h3>
-                <p>Initiated work in the Indian stock market and developed in-depth analysis for future investment strategies. This laid the foundation for Gifftai, a platform designed for financial innovation and portfolio management.</p>
+                <p>Worked on Indian capital markets and developed in-depth market analysis and trading strategies. This research became the groundwork for Gifftai — a later finance and portfolio-management initiative.</p>
             </div>
         </div>
 
-        <!-- 2025 -->
+        <!-- Timeline Item 7: 2025 -->
         <div class="timeline-item">
             <div class="timeline-icon">
                 <svg fill="currentColor" viewBox="0 0 20 20">
@@ -160,12 +598,12 @@
                     <span>2025</span>
                     <span>Mathura & Ayodhya</span>
                 </div>
-                <h3>Launch of Gifftai & Social Initiatives</h3>
-                <p>Launched Gifftai, expanding into finance, technology, and project management. Initiated large-scale real estate projects in Mathura and Ayodhya, alongside social development efforts in education, healthcare, and community welfare.</p>
+                <h3>Gifftai Launch & Social Initiatives</h3>
+                <p>Launched Gifftai to bring together finance, portfolio management, and technology services. Concurrently initiated major real estate and infrastructure projects in Mathura and Ayodhya, and launched social development programs focused on education, healthcare, shelter, and community welfare.</p>
             </div>
         </div>
 
-        <!-- Future Vision -->
+        <!-- Timeline Item 8: Future Vision -->
         <div class="timeline-item">
             <div class="timeline-icon">
                 <svg fill="currentColor" viewBox="0 0 20 20">
@@ -177,8 +615,8 @@
                     <span>Future</span>
                     <span>Ayodhya, Mathura, Aligarh</span>
                 </div>
-                <h3>Vision for the Future</h3>
-                <p>USB Group aims to lead with innovation in real estate, renewable energy, and technology. The future vision includes education initiatives, hospitals, shelter homes, sports colleges, food drives, and sustainability programs across North India.</p>
+                <h3>Vision Ahead</h3>
+                <p>USB Group’s future focus includes large-scale infrastructure, education and healthcare institutions, sports colleges, shelter homes, food drives, cultural preservation projects, renewable energy, and technology-led development to benefit communities across North India.</p>
             </div>
         </div>
     </div>
@@ -187,7 +625,7 @@
     <div class="timeline-container">
         <div class="future-section">
             <h2>Looking Ahead: 2025 & Beyond</h2>
-            <p>USB Group continues its journey toward sustainable growth, community upliftment, and innovation. With upcoming projects in Ayodhya and nationwide social impact programs, we are shaping a stronger, greener, and more inclusive future for India.</p>
+            <p>As USB Group advances, we prioritise sustainable growth, community upliftment and technology-driven solutions. Upcoming projects and initiatives will continue to emphasise education, healthcare, renewable energy and inclusive development across our focus regions.</p>
             <div class="future-badges">
                 <span class="future-badge">Education & Social Welfare</span>
                 <span class="future-badge">Healthcare & Shelter Homes</span>
@@ -202,10 +640,10 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>USB Group</h4>
-                <p>Shaping Tomorrow with Innovation, Trust & Impact. 25+ years of excellence across multiple sectors.</p>
+                <p>Shaping Tomorrow with Innovation. Trust & Impact. 25+ years of excellence across multiple sectors and endless legal solutions.</p>
                 <p>📞 +91 93198 59929</p>
-                <p>📧 usbgroup.2000@gmail.com</p>
-                <p>📍 Dwarka, Delhi, India</p>
+                <p>📧 info@usbgroup.in</p>
+                <p>📍 Delhi NCR, India</p>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
@@ -218,17 +656,18 @@
                 <h4>Our Services</h4>
                 <a href="#">Real Estate</a>
                 <a href="#">IT & Software</a>
-                <a href="#">Consultancy</a>
+                <a href="#">Legal Consulting</a>
                 <a href="#">Renewable Energy</a>
             </div>
             <div class="footer-section">
                 <h4>Get in Touch</h4>
                 <p>Ready to start your next project? Contact us for a free consultation.</p>
-                <p>Available Mon–Fri: 9AM–6PM IST</p>
+              
+                <p>Available Mon-Fri: 9AM-6PM IST</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 USB Group Organisation. All rights reserved. | Privacy Policy | Terms of Service</p>
+            <p>© 2024 USB Group Organisation. All rights reserved. | Privacy Policy | Terms of Service | Cookie Policy</p>
         </div>
     </footer>
 </body>
