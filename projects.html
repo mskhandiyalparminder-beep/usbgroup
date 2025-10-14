@@ -230,17 +230,6 @@
       object-fit: cover;
     }
 
-    .project-price {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: rgba(0, 0, 0, 0.8);
-      color: #fff;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-    }
-
     .project-content {
       padding: 2rem;
     }
@@ -291,29 +280,6 @@
       content: "✓";
       color: #4a9eff;
       margin-right: 0.5rem;
-    }
-
-    .project-cta {
-      display: flex;
-      align-items: center;
-      color: #4a9eff;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.3s;
-    }
-
-    .project-cta:hover {
-      color: #66b3ff;
-    }
-
-    .project-cta::after {
-      content: "→";
-      margin-left: 0.5rem;
-      transition: transform 0.3s;
-    }
-
-    .project-cta:hover::after {
-      transform: translateX(5px);
     }
 
     /* Partnership */
@@ -462,7 +428,7 @@
   <header>
     <nav>
      <div class="logo">
-                <img src="./logo1.png" alt="">
+                <img src="./logo1.png" alt="USB Group Logo">
             </div>
       <ul class="nav-links">
         <li><a href="./index.html">Home</a></li>
@@ -514,148 +480,92 @@
 
       <!-- Projects -->
       <section class="projects-grid">
+
+        <!-- Project 1 -->
         <div class="project-card">
           <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80" alt="Mathura Vrindavan Premium Development">
-            <div class="project-price">₹250 Cr</div>
+            <img src="https://images.unsplash.com/photo-1599423300746-b62533397364?auto=format&fit=crop&w=1000&q=80" alt="AJF Farms Jewar">
           </div>
           <div class="project-content">
-            <h3 class="project-title">Mathura Vrindavan Premium Development</h3>
-            <div class="project-location">📍 Mathura, Vrindavan | 📅 2020-2023</div>
+            <h3 class="project-title">AJF Farms, Jewar</h3>
+            <div class="project-location">📍 Jewar, Uttar Pradesh | 📅 2023 - Present</div>
             <p class="project-description">
-              Luxury residential and commercial complex featuring modern amenities, spiritual tourism facilities, and sustainable infrastructure designed for the holy cities.
+              A modern agricultural and eco-living initiative built on sustainability, organic practices, and innovative design. AJF Farms offers serene farmhouse plots and integrates green energy for a self-sufficient lifestyle.
             </p>
             <div class="project-highlights">
               <h4>Key Highlights</h4>
               <div class="highlights-grid">
-                <div class="highlight-item">500+ Premium Units</div>
-                <div class="highlight-item">Spiritual Tourism Hub</div>
+                <div class="highlight-item">Eco Living</div>
+                <div class="highlight-item">Green Infrastructure</div>
+                <div class="highlight-item">Organic Farming</div>
+                <div class="highlight-item">Smart Water Management</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="Mathura Sanskar City and Goulok Dham">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Mathura Sanskar City & Goulok Dham</h3>
+            <div class="project-location">📍 Mathura, Uttar Pradesh | 📅 2014 - Present</div>
+            <p class="project-description">
+              A spiritually inspired township designed for peaceful community living. It combines modern amenities with the traditional essence of Mathura, featuring green spaces, residential plots, and wellness centers.
+            </p>
+            <div class="project-highlights">
+              <h4>Key Highlights</h4>
+              <div class="highlights-grid">
+                <div class="highlight-item">Residential Plots</div>
+                <div class="highlight-item">Spiritual Environment</div>
+                <div class="highlight-item">Modern Township</div>
+                <div class="highlight-item">Green Zones</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1600585154274-66d1e8b4b9dd?auto=format&fit=crop&w=1000&q=80" alt="USB Consultancy Projects">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">USB Consultancy Projects</h3>
+            <div class="project-location">📍 Pan India | 📅 2017 - Present</div>
+            <p class="project-description">
+              A diversified portfolio of consultancy-driven projects across real estate, finance, IT, and infrastructure. Focused on project strategy, financial management, and turnkey solutions for large-scale developments.
+            </p>
+            <div class="project-highlights">
+              <h4>Key Highlights</h4>
+              <div class="highlights-grid">
+                <div class="highlight-item">Real Estate Advisory</div>
+                <div class="highlight-item">Financial Consultancy</div>
+                <div class="highlight-item">Project Planning</div>
+                <div class="highlight-item">Strategic Management</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1000&q=80" alt="Satya Sai Homes Delhi NCR">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Satya Sai Homes, Delhi NCR</h3>
+            <div class="project-location">📍 Delhi NCR | 📅 2020 - Present</div>
+            <p class="project-description">
+              A premium residential development designed for urban comfort and community living. Satya Sai Homes offers modern housing with high-quality construction and prime connectivity across Delhi NCR.
+            </p>
+            <div class="project-highlights">
+              <h4>Key Highlights</h4>
+              <div class="highlights-grid">
+                <div class="highlight-item">Modern Residences</div>
+                <div class="highlight-item">Prime Location</div>
+                <div class="highlight-item">Community Amenities</div>
                 <div class="highlight-item">Sustainable Design</div>
-                <div class="highlight-item">Modern Amenities</div>
               </div>
-            </div>
-          
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1000&q=80" alt="Jewar Airport Infrastructure">
-            <div class="project-price">₹200 Cr</div>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Jewar Airport Infrastructure</h3>
-            <div class="project-location">📍 Jewar Airport, Delhi NCR | 📅 2022-2025</div>
-            <p class="project-description">
-              Major infrastructure development supporting India's largest airport project with cutting-edge facilities and strategic connectivity solutions.
-            </p>
-            <div class="project-highlights">
-              <h4>Key Highlights</h4>
-              <div class="highlights-grid">
-                <div class="highlight-item">Major Airport Infrastructure</div>
-                <div class="highlight-item">Strategic Connectivity</div>
-                <div class="highlight-item">Modern Facilities</div>
-                <div class="highlight-item">Future-Ready Design</div>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-      </section>
-
-      <!-- Partnership -->
-      <section class="partnership">
-        <h2>Partnership Excellence</h2>
-        <p>Our success is built on strategic partnerships with established companies, government entities, and industry leaders. These collaborations enable us to deliver world-class projects that set new standards in quality and innovation.</p>
-        <div class="partnership-tabs">
-          <button class="tab-btn">Government Partnerships</button>
-          <button class="tab-btn">Industry Leaders</button>
-          <button class="tab-btn">International Collaborations</button>
-          <button class="tab-btn">Technology Partners</button>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>USB Group</h3>
-          <p>Shaping Tomorrow with Innovation, Trust & Impact. 25+ years of excellence across real estate, IT, finance, consultancy, legal services and energy.</p>
-          <div class="footer-contact">
-            <p>📞 +91 93198 59929</p>
-            <p>📧 info@usbgroup.com</p>
-            <p>📍 Delhi NCR, India</p>
-          </div>
-        </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <p><a href="#about">About Us</a></p>
-          <p><a href="#founder">Our Founder</a></p>
-          <p><a href="#timeline">Timeline</a></p>
-          <p><a href="#projects">Key Projects</a></p>
-        </div>
-        <div class="footer-section">
-          <h3>Our Services</h3>
-          <p><a href="#realestate">Real Estate</a></p>
-          <p><a href="#it">IT & Software</a></p>
-          <p><a href="#finance">Financial Consulting</a></p>
-          <p><a href="#energy">Renewable Energy</a></p>
-        </div>
-        <div class="footer-section">
-          <h3>Get In Touch</h3>
-          <p>Ready to start your next project? Contact us for a free consultation.</p>
-          <button class="contact-us-btn">Contact Us</button>
-          <p style="margin-top: 1rem; font-size: 0.8rem;">Available Mon-Fri 9AM-6PM, Sat 9AM-2PM</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2025 USB Group Organisation. All rights reserved. | 
-        <a href="#privacy">Privacy Policy</a> | 
-        <a href="#terms">Terms of Service</a> | 
-        <a href="#cookies">Cookie Policy</a></p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Mobile menu toggle
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
-
-    mobileMenu.addEventListener('click', () => {
-      navLinks.classList.toggle('mobile-active');
-      mobileMenu.classList.toggle('open');
-    });
-
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('mobile-active');
-        mobileMenu.classList.remove('open');
-      });
-    });
-
-    // Partnership tabs
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-      const header = document.querySelector('header');
-      if (window.scrollY > 100) {
-        header.style.background = 'rgba(0, 0, 0, 0.98)';
-      } else {
-        header.style.background = 'rgba(0, 0, 0, 0.95)';
-      }
-    });
-  </script>
-</body>
-</html>
