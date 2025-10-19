@@ -639,6 +639,46 @@ function closePopup() {
         ::-webkit-scrollbar-thumb:hover {
             background: #1d4ed8;
         }
+      /* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Popup Box */
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  animation: popup-fade 0.5s;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Animation */
+@keyframes popup-fade {
+  from {opacity: 0; transform: scale(0.8);}
+  to {opacity: 1; transform: scale(1);}
+}
     </style>
 </head>
 <body>
@@ -1049,10 +1089,29 @@ function closePopup() {
 
         heroObserver.observe(document.querySelector('.hero-stats'));
     </script>
+  <!-- Diwali Popup -->
+<div id="diwaliPopup" class="popup-overlay">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <h2>🪔 Happy Diwali 🪔</h2>
+    <p>May this Diwali bring prosperity, success and new beginnings!</p>
+    <p><strong>USB Group</strong><br>— Uma Shankar Bhardwaj</p>
+  </div>
+</div>
+  <script>
+window.onload = function(){
+    document.getElementById("diwaliPopup").style.display = "flex";
+};
+
+function closePopup(){
+    document.getElementById("diwaliPopup").style.display = "none";
+}
+</script>
 </body>
 </html>
 
   
+
 
 
 
