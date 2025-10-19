@@ -1152,70 +1152,151 @@ function closePopup() {
         });
 
         heroObserver.observe(document.querySelector('.hero-stats'));
-     <!-- Diwali Popup -->
-<div id="diwaliPopup" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="diwaliTitle">
-  <canvas id="fireworksCanvas" aria-hidden="true"></canvas>
-  <div class="popup-content" role="document">
-    <button class="close-btn" aria-label="Close" onclick="closePopup()">&times;</button>
-    <div class="heading" id="diwaliTitle">
-      <span class="lamp">🪔</span>
-      <strong>Happy Diwali</strong>
-      <span>🎆</span>
-    </div>
-    <div id="diwaliMessage" class="message">
-      May the festival of lights bring you joy, prosperity and success! ✨
-    </div>
-    <div class="signature">
-      — <strong>USB Group</strong><br><small>Uma Shankar Bhardwaj</small>
-    </div>
+      <!-- Diwali Popup -->
+<div class="popup-overlay" id="diwaliPopup">
+  <canvas id="fireworksCanvas"></canvas>
+  <div class="popup-content">
+    <button class="close-btn" onclick="closePopup()">×</button>
+    <h2 class="heading">🪔 Happy Diwali 🪔</h2>
+    <p class="message">May this Diwali fill your life with light, happiness, and prosperity!</p>
+    <p class="signature">— Uma Shankar Bhardwaj<br><strong>USB Group</strong></p>
   </div>
 </div>
-       <script>
-window.addEventListener('load', function(){
-  const popup = document.getElementById('diwaliPopup');
-  popup.style.display = 'flex';
-  initFireworks();
-});
-function closePopup(){
-  const popup = document.getElementById('diwaliPopup');
-  popup.style.display = 'none';
-  stopFireworks();
+
+<style>
+/* Overlay */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 20% 10%, rgba(255,200,80,0.06), transparent 10%),
+              linear-gradient(180deg, rgba(10,10,30,0.7), rgba(2,2,10,0.9));
+  z-index: 9999;
+  overflow: hidden;
 }
 
-// ----- Fireworks Animation -----
-let canvas, ctx, W, H, animationId;
-const particles = [], rockets = [];
-function initFireworks(){
-  canvas = document.getElementById('fireworksCanvas');
-  ctx = canvas.getContext('2d');
-  resize();
-  window.addEventListener('resize', resize);
-  animationLoop();
-  setInterval(spawnRocket, 800);
+/* Fireworks Canvas */
+#fireworksCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
-function stopFireworks(){ cancelAnimationFrame(animationId); }
-function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-class Particle {
-  constructor(x,y,vx,vy,color){ this.x=x;this.y=y;this.vx=vx;this.vy=vy;this.life=1+Math.random()*1.5;this.age=0;this.color=color; }
-  update(dt){ this.age+=dt;this.vy+=0.0009*H;this.x+=this.vx*dt;this.y+=this.vy*dt;return this.age<this.life; }
-  draw(ctx){ const t=1-this.age/this.life;ctx.globalAlpha=t;ctx.fillStyle=this.color;ctx.beginPath();ctx.arc(this.x,this.y,2,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1; }
+
+/* Popup Box */
+.popup-content {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, #fffefc, #fff8e1);
+  padding: 25px 30px;
+  text-align: center;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  max-width: 450px;
+  width: 90%;
+  animation: popup-fade 0.5s ease-out;
+  font-family: "Segoe UI", sans-serif;
 }
-class Rocket {
-  constructor(x,y,vx,vy,color){ this.x=x;this.y=y;this.vx=vx;this.vy=vy;this.color=color; }
-  update(dt){ this.vy+=0.0008*H;this.x+=this.vx*dt;this.y+=this.vy*dt; if(this.vy>=0) this.explode(); }
-  explode(){ for(let i=0;i<30;i++){ const a=Math.random()*Math.PI*2,s=1+Math.random()*1.5;particles.push(new Particle(this.x,this.y,Math.cos(a)*s*W*0.0008,Math.sin(a)*s*H*0.0008,this.color)); } rockets.splice(rockets.indexOf(this),1); }
+
+/* Text Styling */
+.heading {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ff9800;
 }
-function animationLoop(t){ animationId=requestAnimationFrame(animationLoop); ctx.fillStyle="rgba(0,0,0,0.2)";ctx.fillRect(0,0,W,H);
-  for(let i=rockets.length-1;i>=0;i--) rockets[i].update(0.016);
-  for(let i=particles.length-1;i>=0;i--) if(!particles[i].update(0.016)) particles.splice(i,1); else particles[i].draw(ctx);
+.message {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.4;
+  margin-bottom: 12px;
 }
-function spawnRocket(){ const x=Math.random()*W,y=H,vx=(Math.random()-0.5)*W*0.0004,vy=-H*0.0018,color=randomColor();rockets.push(new Rocket(x,y,vx,vy,color)); }
-function randomColor(){ const c=["#FFD166","#FF6B6B","#6BCB77","#4D96FF","#FF9F1C","#FF3CAC"];return c[Math.floor(Math.random()*c.length)]; }
+.signature {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #000;
+}
+
+/* Animation */
+@keyframes popup-fade {
+  from {opacity: 0; transform: scale(0.8);}
+  to {opacity: 1; transform: scale(1);}
+}
+</style>
+
+<script>
+function showPopup() {
+  const popup = document.getElementById("diwaliPopup");
+  popup.style.display = "flex";
+
+  // Fireworks animation
+  const canvas = document.getElementById("fireworksCanvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const fireworks = [];
+  class Firework {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = canvas.height;
+      this.targetY = Math.random() * (canvas.height / 2);
+      this.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+      this.size = Math.random() * 3 + 1;
+      this.speed = Math.random() * 3 + 2;
+    }
+    update() {
+      if (this.y > this.targetY) this.y -= this.speed;
+      else this.size *= 0.98;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (Math.random() < 0.1) fireworks.push(new Firework());
+    fireworks.forEach((f, i) => {
+      f.update();
+      if (f.size < 0.5) fireworks.splice(i, 1);
+    });
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+function closePopup() {
+  document.getElementById("diwaliPopup").style.display = "none";
+}
+
+window.addEventListener("load", () => {
+  setTimeout(showPopup, 1500); // show after 1.5 seconds
+});
 </script>
+
 </body>
 </html>
 
   
+
 
 
 
