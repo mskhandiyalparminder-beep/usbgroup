@@ -1088,29 +1088,459 @@ function closePopup() {
         });
 
         heroObserver.observe(document.querySelector('.hero-stats'));
-    </script>
-  <!-- Diwali Popup -->
-<div id="diwaliPopup" class="popup-overlay">
-  <div class="popup-content">
-    <span class="close-btn" onclick="closePopup()">&times;</span>
-    <h2>🪔 Happy Diwali 🪔</h2>
-    <p>May this Diwali bring prosperity, success and new beginnings!</p>
-    <p><strong>USB Group</strong><br>— Uma Shankar Bhardwaj</p>
+      <!-- ====== Diwali Deluxe Popup (paste before </body>) ====== -->
+<style>
+/* ---------- Overlay & Modal ---------- */
+#diwaliOverlay {
+  position: fixed;
+  inset: 0;
+  display: none; /* shown by JS */
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  pointer-events: auto;
+}
+
+#diwaliBackdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top, rgba(255,200,80,0.08), rgba(0,0,0,0.6));
+  backdrop-filter: blur(2px);
+}
+
+/* Canvas covers the whole overlay for fireworks */
+#diwaliFireworks {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Center modal card */
+#diwaliModal {
+  position: relative;
+  z-index: 3;
+  width: min(760px, 92%);
+  max-width: 900px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 26px 28px 10px 28px;
+  background: linear-gradient(180deg, rgba(255, 245, 235, 0.95), rgba(255, 240, 220, 0.92));
+  border: 1px solid rgba(255,200,80,0.12);
+}
+
+/* Close button */
+#diwaliClose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #6b3b00;
+}
+
+/* Logo */
+#diwaliLogo {
+  height: 48px;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+}
+
+/* Greeting text */
+.diwaliTitle {
+  font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Noto Sans", "Helvetica Neue", Arial;
+  font-size: clamp(20px, 3.6vw, 36px);
+  line-height: 1.05;
+  color: #6b3b00;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  margin: 6px 0 6px 0;
+  background: linear-gradient(90deg, #b36b00, #ffd166 40%, #ffd700 60%, #fff2d0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: glowText 2.8s infinite ease-in-out;
+  text-shadow: 0 6px 18px rgba(179,107,0,0.18);
+}
+
+/* Subtitle */
+.diwaliSub {
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: #4b3220;
+  margin-bottom: 14px;
+}
+
+/* Buttons area */
+#diwaliButtons {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  margin-bottom: 6px;
+  z-index: 4;
+}
+
+.diwaliBtn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+/* Primary (explore offers) */
+.diwaliPrimary {
+  background: linear-gradient(90deg,#ffb84d,#ff8a00);
+  color: #2d1100;
+}
+
+/* Secondary (close) */
+.diwaliSecondary {
+  background: rgba(255,255,255,0.9);
+  color: #6b3b00;
+  border: 1px solid rgba(107,59,0,0.08);
+}
+
+/* Diya container */
+#diyaWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 6px;
+  padding-bottom: 10px;
+  z-index: 4;
+}
+
+/* Diya glow animation */
+.diya-svg {
+  width: 220px;
+  max-width: 56%;
+  height: auto;
+  filter: drop-shadow(0 12px 30px rgba(255,160,60,0.16));
+  transform-origin: center bottom;
+  animation: diyaSway 3.8s ease-in-out infinite;
+}
+
+/* sparkle above diya */
+.diya-flame {
+  transform-origin: center bottom;
+  animation: flameFlicker 1.6s infinite;
+  filter: drop-shadow(0 10px 26px rgba(255,160,60,0.16));
+}
+
+/* tiny sparkle */
+.diya-spark {
+  animation: sparkPulse 2.4s infinite;
+  opacity: 0.95;
+}
+
+/* Animations */
+@keyframes glowText {
+  0% { filter: saturate(0.95) blur(0px); transform: translateY(0px); }
+  50% { filter: saturate(1.15) blur(0.6px); transform: translateY(-2px); }
+  100% { filter: saturate(0.95) blur(0px); transform: translateY(0px); }
+}
+@keyframes diyaSway {
+  0% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-6px) rotate(1.2deg); }
+  100% { transform: translateY(0) rotate(-1deg); }
+}
+@keyframes flameFlicker {
+  0% { transform: scaleY(1); opacity: 1; }
+  30% { transform: scaleY(1.06); opacity: 0.9; }
+  60% { transform: scaleY(0.94); opacity: 0.95; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+@keyframes sparkPulse {
+  0% { transform: translateY(0) scale(1); opacity: 0.95; }
+  50% { transform: translateY(-4px) scale(1.06); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 0.95; }
+}
+
+/* small note */
+.diwaliNote {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(75,50,35,0.8);
+}
+
+/* Responsive tweaks */
+@media (max-width: 520px) {
+  #diwaliModal { padding: 18px 16px 8px 16px; }
+  .diya-svg { width: 68%; }
+}
+</style>
+
+<div id="diwaliOverlay" role="dialog" aria-modal="true" aria-label="Happy Diwali popup">
+  <div id="diwaliBackdrop"></div>
+
+  <!-- Fireworks canvas -->
+  <canvas id="diwaliFireworks"></canvas>
+
+  <!-- Modal content -->
+  <div id="diwaliModal">
+    <button id="diwaliClose" aria-label="Close popup">&times;</button>
+
+    <!-- Logo: replace src with your USB Group logo path -->
+    <img id="diwaliLogo" src="https://via.placeholder.com/240x64?text=USB+Group+Logo" alt="USB Group logo">
+
+    <div class="diwaliTitle">🪔 Happy Diwali</div>
+    <div class="diwaliSub">from USB Group<br><strong>— Uma Shankar Bhardwaj</strong></div>
+
+    <div id="diwaliButtons">
+      <button class="diwaliBtn diwaliPrimary" id="diwaliOfferBtn">Explore Diwali Offers</button>
+      <button class="diwaliBtn diwaliSecondary" id="diwaliCloseBtn">Close</button>
+    </div>
+
+    <div id="diyaWrap" aria-hidden="true">
+      <!-- Inline SVG Diya with animated flame -->
+      <svg class="diya-svg" viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <!-- Base plate -->
+        <ellipse cx="120" cy="132" rx="80" ry="10" fill="#3b2a14" opacity="0.16"/>
+        <!-- Lamp body -->
+        <path d="M32 118 C60 84, 180 84, 208 118 C160 126, 120 148, 32 118 Z" fill="#b36b00" />
+        <path d="M36 116 C64 86, 176 86, 204 116 C160 122, 120 140, 36 116 Z" fill="#ffcf80" opacity="0.14"/>
+
+        <!-- Flame group -->
+        <g class="diya-flame">
+          <path d="M120 42 C112 52, 108 66, 120 82 C132 66, 128 52, 120 42 Z" fill="#ffd45c"/>
+          <path d="M120 52 C116 60, 114 68, 120 78 C126 68, 124 60, 120 52 Z" fill="#ff8a00"/>
+          <!-- tiny spark -->
+          <circle class="diya-spark" cx="120" cy="36" r="3.6" fill="#fff8d6" />
+        </g>
+
+        <!-- Decorative dots -->
+        <g opacity="0.9">
+          <circle cx="80" cy="100" r="3.2" fill="#fff4e0" />
+          <circle cx="160" cy="102" r="2.8" fill="#fff4e0"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="diwaliNote">Shown once every 7 days. Visit our site for exclusive Diwali announcements.</div>
   </div>
 </div>
-  <script>
-window.onload = function(){
-    document.getElementById("diwaliPopup").style.display = "flex";
-};
 
-function closePopup(){
-    document.getElementById("diwaliPopup").style.display = "none";
+<script>
+/* ---------- Cookie helpers ---------- */
+function setCookie(name, value, days) {
+  const ex = new Date();
+  ex.setTime(ex.getTime() + days*24*60*60*1000);
+  document.cookie = name + "=" + encodeURIComponent(value) + ";expires=" + ex.toUTCString() + ";path=/";
 }
+function getCookie(name) {
+  const kv = document.cookie.split(";").map(c => c.trim()).find(c => c.startsWith(name + "="));
+  return kv ? decodeURIComponent(kv.split("=")[1]) : null;
+}
+
+/* ---------- Show logic (once per 7 days) ---------- */
+(function() {
+  const shown = getCookie("diwali_shown_v1");
+  if (shown) return; // already shown in cookie window
+
+  // show after small delay so page renders smoothly
+  window.addEventListener('load', function(){
+    setTimeout(showDiwaliPopup, 700);
+  });
+})();
+
+/* ---------- Elements ---------- */
+const overlay = document.getElementById('diwaliOverlay');
+const closeBtn = document.getElementById('diwaliClose');
+const closeBtn2 = document.getElementById('diwaliCloseBtn');
+const offerBtn = document.getElementById('diwaliOfferBtn');
+
+/* ---------- Show / Hide ---------- */
+function showDiwaliPopup(){
+  overlay.style.display = "flex";
+  // mark cookie for 7 days so this doesn't keep showing
+  setCookie("diwali_shown_v1", "1", 7);
+  // start fireworks
+  startFireworks();
+}
+function hideDiwaliPopup(){
+  overlay.style.display = "none";
+  stopFireworks();
+}
+
+/* ---------- Button events ---------- */
+closeBtn.addEventListener('click', hideDiwaliPopup);
+closeBtn2.addEventListener('click', hideDiwaliPopup);
+offerBtn.addEventListener('click', function(){
+  // Example: navigate to offers page - change URL as required
+  window.location.href = "/offers"; // <- change this to your offers page
+});
+
+/* close on Escape key */
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') hideDiwaliPopup(); });
+
+/* ---------- Fireworks (canvas) ---------- */
+/* Lightweight particle fireworks adapted for a festive effect */
+let fwCanvas, fwCtx, fwAnim, particles = [], rockets = [], running = false;
+
+function startFireworks(){
+  if (running) return;
+  running = true;
+  fwCanvas = document.getElementById('diwaliFireworks');
+  fwCanvas.width = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+  fwCanvas.height = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+  fwCtx = fwCanvas.getContext('2d');
+  fwCtx.globalCompositeOperation = 'lighter';
+  loop();
+  // spawn periodic rockets
+  rocketSpawnInterval = setInterval(launchRandomRocket, 600);
+}
+function stopFireworks(){
+  running = false;
+  if (fwAnim) cancelAnimationFrame(fwAnim);
+  if (typeof rocketSpawnInterval !== 'undefined') clearInterval(rocketSpawnInterval);
+  if (fwCtx) { fwCtx.clearRect(0,0,fwCanvas.width, fwCanvas.height); }
+  particles = []; rockets = [];
+}
+
+function launchRandomRocket() {
+  // Launch from bottom at random x
+  const x = 60 + Math.random() * (fwCanvas.width - 120);
+  const vx = (Math.random() - 0.5) * 1.6;
+  const vy = -(6 + Math.random() * 3.5);
+  rockets.push({
+    x, y: fwCanvas.height + 6, vx, vy,
+    life: 0, explodeAt: 0.35 + Math.random()*0.45,
+    color: randomFireworkColor()
+  });
+}
+
+function randomFireworkColor(){
+  // mix of oranges, golds, purple, magenta
+  const colors = ["#ffb84d","#ff8a00","#ffd166","#ff5b8a","#c77dff","#ffd700","#ffb3c6","#ffdd99"];
+  return colors[Math.floor(Math.random()*colors.length)];
+}
+
+function createExplosion(x, y, color) {
+  const count = 18 + Math.floor(Math.random()*22);
+  for (let i=0;i<count;i++){
+    const angle = (Math.PI*2) * Math.random();
+    const speed = 1.6 + Math.random()*3.8;
+    particles.push({
+      x, y,
+      vx: Math.cos(angle) * speed * (0.6 + Math.random()*1.4),
+      vy: Math.sin(angle) * speed * (0.6 + Math.random()*1.6),
+      life: 0,
+      decay: 60 + Math.random()*60,
+      color,
+      size: 1.2 + Math.random()*2.4
+    });
+  }
+}
+
+function loop(){
+  fwAnim = requestAnimationFrame(loop);
+  fwCtx.clearRect(0,0,fwCanvas.width, fwCanvas.height);
+
+  // update rockets
+  for (let i = rockets.length-1; i>=0; i--){
+    const r = rockets[i];
+    r.life += 1/60;
+    r.x += r.vx;
+    r.y += r.vy;
+    r.vy += 0.06; // gravity
+    // draw rocket as small point/trail
+    fwCtx.beginPath();
+    fwCtx.fillStyle = r.color;
+    fwCtx.globalAlpha = 0.95;
+    fwCtx.arc(r.x, r.y, 2.4, 0, Math.PI*2);
+    fwCtx.fill();
+
+    // trail
+    fwCtx.beginPath();
+    fwCtx.fillStyle = 'rgba(255,190,100,0.12)';
+    fwCtx.arc(r.x - r.vx*2, r.y - r.vy*2, 2.6, 0, Math.PI*2);
+    fwCtx.fill();
+
+    // explode?
+    if (r.life > r.explodeAt) {
+      createExplosion(r.x, r.y, r.color);
+      rockets.splice(i,1);
+    } else if (r.y > fwCanvas.height - 8) {
+      // if hits ground, remove
+      rockets.splice(i,1);
+    }
+  }
+
+  // update particles
+  for (let i = particles.length-1; i>=0; i--){
+    const p = particles[i];
+    p.life++;
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.03; // gravity
+    p.vx *= 0.995;
+    p.vy *= 0.995;
+    const alpha = Math.max(0, 1 - p.life / p.decay);
+
+    // draw particle
+    fwCtx.beginPath();
+    fwCtx.globalAlpha = alpha;
+    // radial gradient for soft glow
+    const g = fwCtx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size*6);
+    g.addColorStop(0, p.color);
+    g.addColorStop(0.3, hexToRgba(p.color, 0.92));
+    g.addColorStop(0.8, hexToRgba(p.color, 0.18));
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    fwCtx.fillStyle = g;
+    fwCtx.fillRect(p.x - p.size*6, p.y - p.size*6, p.size*12, p.size*12);
+
+    // remove if faded
+    if (p.life > p.decay) particles.splice(i,1);
+  }
+
+  // occasional soft glows (simulated by low-alpha circles)
+  if (Math.random() < 0.02 && fwCanvas.width > 480) {
+    const gx = 60 + Math.random() * (fwCanvas.width - 120);
+    const gy = 40 + Math.random() * (fwCanvas.height * 0.3);
+    const grd = fwCtx.createRadialGradient(gx, gy, 0, gx, gy, 120);
+    grd.addColorStop(0, "rgba(255,210,120,0.06)");
+    grd.addColorStop(1, "rgba(255,210,120,0)");
+    fwCtx.fillStyle = grd;
+    fwCtx.fillRect(gx-120, gy-120, 240, 240);
+  }
+}
+
+/* helper convert hex to rgba */
+function hexToRgba(hex, alpha=1) {
+  const h = hex.replace('#','');
+  const bigint = parseInt(h,16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+}
+
+/* handle resize */
+window.addEventListener('resize', function(){
+  if (fwCanvas) {
+    fwCanvas.width = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    fwCanvas.height = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+  }
+});
 </script>
 </body>
 </html>
 
   
+
 
 
 
