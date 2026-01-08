@@ -1210,10 +1210,108 @@ function closePopup(){
     document.getElementById("diwaliPopup").style.display = "none";
 }
 </script>
+          <div id="comingSoonOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999999; display: flex; justify-content: center; align-items: center; background: rgba(5, 10, 20, 0.95); font-family: 'Poppins', sans-serif;">
+            
+            <style>
+                .cs-card {
+                    position: relative;
+                    width: 450px;
+                    max-width: 85%; /* Mobile Friendly */
+                    background: rgba(255, 255, 255, 0.05);
+                    backdrop-filter: blur(15px);
+                    border: 1px solid rgba(0, 242, 255, 0.5);
+                    border-radius: 30px;
+                    padding: 50px 20px;
+                    text-align: center;
+                    color: white;
+                    box-shadow: 0 0 50px rgba(0, 242, 255, 0.2);
+                    z-index: 10;
+                    animation: scaleUp 0.4s ease-out;
+                }
+
+                @keyframes scaleUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+                .brand-title { 
+                    font-size: 20px; 
+                    font-weight: 800; 
+                    color: #00f2ff; 
+                    letter-spacing: 2px; 
+                    text-transform: uppercase; 
+                    margin-bottom: 10px; 
+                }
+
+               .coming-soon-bold { 
+                    font-size: 55px; 
+                    font-weight: 900; 
+                    line-height: 1; 
+                    margin: 0; 
+                    background: linear-gradient(to bottom, #fff, #888); 
+                    -webkit-background-clip: text; 
+                    -webkit-text-fill-color: transparent; 
+                    text-transform: uppercase;
+                }
+
+                .cs-sub { font-size: 16px; color: #ccc; margin: 25px 0; line-height: 1.4; }
+
+                .cs-btn {
+                    display: inline-block;
+                    background: #00f2ff;
+                    color: #000;
+                    padding: 16px 40px;
+                    border-radius: 50px;
+                    font-weight: 800;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    transition: 0.3s;
+                }
+
+                .cs-close { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #777; line-height: 1; }
+                
+                /* Mobile specific tweaks */
+                @media (max-width: 480px) {
+                    .cs-card { padding: 35px 15px; }
+                    .cs-sub { font-size: 13px; }
+                }
+            </style>
+
+            <div class="cs-card">
+                <div class="cs-close" onclick="document.getElementById('comingSoonOverlay').style.display='none'">&times;</div>
+                <div class="brand-title">GIFFT Advisors</div>
+                <h1 class="coming-soon-bold">COMING<br>SOON</h1>
+                <p class="cs-sub">We are launching something revolutionary for your financial growth.</p>
+                <a href="https://wa.me/919560610184?text=Notify%20me%20about%20GIFFT%20Advisors" class="cs-btn">NOTIFY ME</a>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+        <script>
+            function launchIntenseCrackers() {
+                const duration = 5 * 1000;
+                const animationEnd = Date.now() + duration;
+                const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 999999 };
+
+                const interval = setInterval(function() {
+                    const timeLeft = animationEnd - Date.now();
+                    if (timeLeft <= 0) return clearInterval(interval);
+
+                    const particleCount = 60 * (timeLeft / duration);
+                    // Fireworks popping from different spots across the middle of the screen
+                    confetti({ ...defaults, particleCount, origin: { x: Math.random(), y: Math.random() - 0.2 } });
+                }, 300);
+            }
+
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    document.getElementById('comingSoonOverlay').style.display = 'flex';
+                    launchIntenseCrackers();
+                }, 800);
+            });
+        </script>
 </body>
 </html>
 
   
+
 
 
 
