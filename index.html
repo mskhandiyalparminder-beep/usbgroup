@@ -1191,134 +1191,63 @@ function closePopup() {
             });
         });
 
+// Finalize the observer
         heroObserver.observe(document.querySelector('.hero-stats'));
-        <div class="contact-buttons" style="position: fixed; bottom: 20px; right: 20px; z-index: 999998; display: flex; flex-direction: column; gap: 15px;">
-    
-    <a href="https://wa.me/919319859929?text=Hi%2C%20I%20want%20to%20learn%20more%20about%20your%20services." 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       title="Chat on WhatsApp"
-       style="transition: transform 0.3s ease;">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" 
-             alt="WhatsApp" 
-             style="width: 55px; height: 55px; filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.3));">
-    </a>
+    </script>
 
-    <a href="mailto:Usbgroup.2000@gmail.com?subject=Enquiry%20from%20Website" 
-       title="Send an Email"
-       style="transition: transform 0.3s ease;">
-        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" 
-             alt="Email" 
-             style="width: 55px; height: 55px; filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.3));">
-    </a>
+    <div class="contact-buttons" style="position: fixed; bottom: 20px; right: 20px; z-index: 999998; display: flex; flex-direction: column; gap: 15px;">
+        <a href="https://wa.me/919319859929?text=Hi%2C%20I%20want%20to%20learn%20more" target="_blank" rel="noopener noreferrer" style="transition: transform 0.3s ease;">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width: 55px; height: 55px; filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.3));">
+        </a>
+        <a href="mailto:Usbgroup.2000@gmail.com" style="transition: transform 0.3s ease;">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" style="width: 55px; height: 55px; filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.3));">
+        </a>
+    </div>
 
-</div>
-
-<style>
-    /* Hover effect to make them pop */
-    .contact-buttons a:hover {
-        transform: scale(1.1);
-    }
-</style>
-          <div id="comingSoonOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999999; display: flex; justify-content: center; align-items: center; background: rgba(5, 10, 20, 0.95); font-family: 'Poppins', sans-serif;">
-            
-            <style>
-                .cs-card {
-                    position: relative;
-                    width: 450px;
-                    max-width: 85%; /* Mobile Friendly */
-                    background: rgba(255, 255, 255, 0.05);
-                    backdrop-filter: blur(15px);
-                    border: 1px solid rgba(0, 242, 255, 0.5);
-                    border-radius: 30px;
-                    padding: 50px 20px;
-                    text-align: center;
-                    color: white;
-                    box-shadow: 0 0 50px rgba(0, 242, 255, 0.2);
-                    z-index: 10;
-                    animation: scaleUp 0.4s ease-out;
-                }
-
-                @keyframes scaleUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
-                .brand-title { 
-                    font-size: 20px; 
-                    font-weight: 800; 
-                    color: #00f2ff; 
-                    letter-spacing: 2px; 
-                    text-transform: uppercase; 
-                    margin-bottom: 10px; 
-                }
-
-               .coming-soon-bold { 
-                    font-size: 55px; 
-                    font-weight: 900; 
-                    line-height: 1; 
-                    margin: 0; 
-                    background: linear-gradient(to bottom, #fff, #888); 
-                    -webkit-background-clip: text; 
-                    -webkit-text-fill-color: transparent; 
-                    text-transform: uppercase;
-                }
-
-                .cs-sub { font-size: 16px; color: #ccc; margin: 25px 0; line-height: 1.4; }
-
-                .cs-btn {
-                    display: inline-block;
-                    background: #00f2ff;
-                    color: #000;
-                    padding: 16px 40px;
-                    border-radius: 50px;
-                    font-weight: 800;
-                    text-decoration: none;
-                    text-transform: uppercase;
-                    transition: 0.3s;
-                }
-
-                .cs-close { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #777; line-height: 1; }
-                
-                /* Mobile specific tweaks */
-                @media (max-width: 480px) {
-                    .cs-card { padding: 35px 15px; }
-                    .cs-sub { font-size: 13px; }
-                }
-            </style>
-
-            <div class="cs-card">
-                <div class="cs-close" onclick="document.getElementById('comingSoonOverlay').style.display='none'">&times;</div>
-                <div class="brand-title">GIFFT Advisors</div>
-                <h1 class="coming-soon-bold">COMING<br>SOON</h1>
-                <p class="cs-sub">We are launching something revolutionary for your financial growth.</p>
-                <a href="https://wa.me/919560610184?text=Notify%20me%20about%20GIFFT%20Advisors" class="cs-btn">NOTIFY ME</a>
-            </div>
+    <div id="comingSoonOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999999; display: none; justify-content: center; align-items: center; background: rgba(5, 10, 20, 0.95); font-family: 'Poppins', sans-serif;">
+        <style>
+            .cs-card { position: relative; width: 450px; max-width: 85%; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(0, 242, 255, 0.5); border-radius: 30px; padding: 50px 20px; text-align: center; color: white; box-shadow: 0 0 50px rgba(0, 242, 255, 0.2); animation: scaleUp 0.4s ease-out; }
+            @keyframes scaleUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+            .brand-title { font-size: 20px; font-weight: 800; color: #00f2ff; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+            .coming-soon-bold { font-size: 55px; font-weight: 900; line-height: 1; margin: 0; background: linear-gradient(to bottom, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; }
+            .cs-sub { font-size: 16px; color: #ccc; margin: 25px 0; line-height: 1.4; }
+            .cs-btn { display: inline-block; background: #00f2ff; color: #000; padding: 16px 40px; border-radius: 50px; font-weight: 800; text-decoration: none; text-transform: uppercase; }
+            .cs-close { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #777; }
+            .contact-buttons a:hover { transform: scale(1.1); }
+        </style>
+        <div class="cs-card">
+            <div class="cs-close" onclick="document.getElementById('comingSoonOverlay').style.display='none'">&times;</div>
+            <div class="brand-title">USB Group</div>
+            <h1 class="coming-soon-bold">COMING<br>SOON</h1>
+            <p class="cs-sub">We are launching something revolutionary for your financial growth.</p>
+            <a href="https://wa.me/919319859929?text=Notify%20Me" class="cs-btn">NOTIFY ME</a>
         </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-        <script>
-            function launchIntenseCrackers() {
-                const duration = 5 * 1000;
-                const animationEnd = Date.now() + duration;
-                const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 999999 };
-
-                const interval = setInterval(function() {
-                    const timeLeft = animationEnd - Date.now();
-                    if (timeLeft <= 0) return clearInterval(interval);
-
-                    const particleCount = 60 * (timeLeft / duration);
-                    // Fireworks popping from different spots across the middle of the screen
-                    confetti({ ...defaults, particleCount, origin: { x: Math.random(), y: Math.random() - 0.2 } });
-                }, 300);
-            }
-
-            window.addEventListener('load', function() {
-                setTimeout(function() {
-                    document.getElementById('comingSoonOverlay').style.display = 'flex';
-                    launchIntenseCrackers();
-                }, 800);
-            });
-        </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const overlay = document.getElementById('comingSoonOverlay');
+                if(overlay) {
+                    overlay.style.display = 'flex';
+                    // Launch Confetti
+                    const duration = 3 * 1000;
+                    const end = Date.now() + duration;
+                    (function frame() {
+                        confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 }, zIndex: 1000000 });
+                        confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 }, zIndex: 1000000 });
+                        if (Date.now() < end) { requestAnimationFrame(frame); }
+                    }());
+                }
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
+</body>
+</html>
+
 
 
 
