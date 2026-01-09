@@ -114,6 +114,26 @@
     .footer-bottom{text-align:center;color:#888;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:2rem;}
     @media(max-width:768px){.stats{grid-template-columns:repeat(2,1fr);}.projects-grid{grid-template-columns:1fr;}.footer-content{grid-template-columns:repeat(2,1fr);}}
     @media(max-width:480px){.stats{grid-template-columns:1fr;}.footer-content{grid-template-columns:1fr;}}
+    /* --- Fix for Mobile View --- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: row; /* Keep logo and menu on one line */
+        justify-content: space-between;
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        display: none; /* This hides the long list on phones */
+    }
+
+    .cta-button {
+        display: none; /* Hides the blue button on small phones */
+    }
+
+    .mobile-menu {
+        display: flex; /* Shows the 3 bars (hamburger menu) */
+    }
+}
   </style>
 </head>
 <body>
@@ -293,6 +313,7 @@
     </div>
 </body>
 </html>
+
 
 
 
