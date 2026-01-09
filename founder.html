@@ -442,6 +442,26 @@
                 padding: 2rem 1rem 1rem;
             }
         }
+            /* --- Fix for Mobile View --- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: row; /* Keep logo and menu on one line */
+        justify-content: space-between;
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        display: none; /* This hides the long list on phones */
+    }
+
+    .cta-button {
+        display: none; /* Hides the blue button on small phones */
+    }
+
+    .mobile-menu {
+        display: flex; /* Shows the 3 bars (hamburger menu) */
+    }
+}
     </style>
 </head>
 <body>
@@ -615,6 +635,7 @@
     </div>
 </body>
 </html>
+
 
 
 
